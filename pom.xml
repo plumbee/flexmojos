@@ -44,7 +44,8 @@
     <maven>${maven.version}</maven>
   </prerequisites>
 
-  <distributionManagement>
+<!-- 
+ <distributionManagement>
     <repository>
       <id>ossrh</id>
       <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
@@ -54,7 +55,7 @@
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
   </distributionManagement>
-
+-->
   <repositories>
     <repository>
       <id>rso</id>
