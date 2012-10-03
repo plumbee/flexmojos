@@ -519,13 +519,14 @@ public class TestCompilerMojo
         Collection<Artifact> coverArtifact =
             (Collection<Artifact>) ( coverage ? Collections.singletonList( getFlexmojosTestArtifact( "flexmojos-test-coverage" ) )
                             : Collections.emptyList() );
-        return MavenUtils.getFiles( coverArtifact,
+        File[] includeLibs = MavenUtils.getFiles( coverArtifact,
                                     Collections.singletonList( getFlexmojosUnittestSupport() ),
                                     Collections.singletonList( getFlexmojosUnittestFrameworkIntegrationLibrary() ),
                                     getDependencies( anyOf( type( SWC ), type( ANE ) ), //
                                                      anyOf( scope( INTERNAL ), scope( RSL ), scope( CACHING ),
                                                             scope( TEST ) ),//
                                                      not( GLOBAL_MATCHER ) ) );
+        return addIncludedLibraries(includeLibs);
     }
 
     @Override
@@ -561,11 +562,12 @@ public class TestCompilerMojo
     @Override
     public File[] getLibraryPath()
     {
-        return MavenUtils.getFiles( getDependencies( type( SWC ),//
+        File[] libs = MavenUtils.getFiles( getDependencies( type( SWC ),//
                                                      anyOf( scope( MERGED ), scope( EXTERNAL ), scope( COMPILE ),
                                                             scope( nullValue( String.class ) ) ),//
                                                      not( GLOBAL_MATCHER ) ),//
                                     getCompiledResouceBundles() );
+        return addMergedLibraries(libs);
     }
 
     @Override

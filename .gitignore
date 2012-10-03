@@ -27,3 +27,4 @@ bin/
 .scala_dependencies
 
 .DS_Store
+/.idea

@@ -124,11 +124,10 @@ import org.codehaus.plexus.util.xml.Xpp3DomBuilder;
 import org.hamcrest.Matcher;
 
 public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompilerMojo<CFG, C>>
-    extends AbstractMavenMojo
-    implements ICompilerConfiguration, IFramesConfiguration, ILicensesConfiguration, IMetadataConfiguration,
-    IMxmlConfiguration, INamespacesConfiguration, IExtensionsConfiguration, Cacheable, Cloneable, FlexMojo,
-    IRuntimeSharedLibrarySettingsConfiguration
-{
+        extends AbstractMavenMojo
+        implements ICompilerConfiguration, IFramesConfiguration, ILicensesConfiguration, IMetadataConfiguration,
+        IMxmlConfiguration, INamespacesConfiguration, IExtensionsConfiguration, Cacheable, Cloneable, FlexMojo,
+        IRuntimeSharedLibrarySettingsConfiguration {
 
     private static final Object lock = new Object();
 
@@ -139,7 +138,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.accessible
      * </p>
-     * 
+     *
      * @parameter expression="${flex.accessible}"
      */
     private Boolean accessible;
@@ -150,7 +149,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.actionscript-file-encoding
      * </p>
-     * 
+     *
      * @parameter expression="${flex.actionscriptFileEncoding}"
      */
     private String actionscriptFileEncoding;
@@ -160,7 +159,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.adjust-opdebugline
      * </p>
-     * 
+     *
      * @parameter expression="${flex.adjustOpdebugline}"
      */
     private Boolean adjustOpdebugline;
@@ -174,7 +173,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.allow-duplicate-style-declaration
      * </p>
-     * 
+     *
      * @parameter expression="${flex.allowDuplicateDefaultStyleDeclarations}"
      */
     private Boolean allowDuplicateDefaultStyleDeclarations;
@@ -185,7 +184,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.allow-source-path-overlap
      * </p>
-     * 
+     *
      * @parameter expression="${flex.allowSourcePathOverlap}"
      */
     private Boolean allowSourcePathOverlap;
@@ -197,7 +196,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -runtime-shared-library-settings.application-domains
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;applicationDomains&gt;
      *   &lt;applicationDomain&gt;
@@ -210,7 +209,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      *   &lt;/applicationDomain&gt;
      * &lt;/applicationDomains&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private MavenApplicationDomains[] applicationDomains;
@@ -220,7 +219,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.archive-classes-and-assets
      * </p>
-     * 
+     *
      * @parameter expression="${flex.archiveClassesAndAssets}"
      */
     private Boolean archiveClassesAndAssets;
@@ -231,7 +230,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.as3
      * </p>
-     * 
+     *
      * @parameter expression="${flex.as3}"
      */
     private Boolean as3;
@@ -241,7 +240,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -benchmark
      * </p>
-     * 
+     *
      * @parameter expression="${flex.benchmark}"
      */
     protected Boolean benchmark;
@@ -252,7 +251,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -benchmark-compiler-details
      * </p>
      * 0 = none, 1 = light, 5 = verbose
-     * 
+     *
      * @parameter expression="${flex.benchmarkCompilerDetails}"
      */
     private Integer benchmarkCompilerDetails;
@@ -263,14 +262,14 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -benchmark-time-filter
      * </p>
      * min time of units to log in ms
-     * 
+     *
      * @parameter expression="${flex.benchmarkTimeFilter}"
      */
     private Long benchmarkTimeFilter;
 
     /**
      * Classifier to add to the artifact generated. If given, the artifact will be an attachment instead.
-     * 
+     *
      * @parameter expression="${flex.classifier}"
      */
     protected String classifier;
@@ -280,7 +279,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.mxml.compatibility-version
      * </p>
-     * 
+     *
      * @parameter expression="${flex.compatibilityVersion}"
      */
     private String compatibilityVersion;
@@ -298,14 +297,14 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * -compiler.show-shadowed-device-font-warnings, -compiler.show-unused-type-selector-warnings and -compiler.warn-*
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;compilerWarnings&gt;
      *   &lt;show-actionscript-warnings&gt;true&lt;/show-actionscript-warnings&gt;
      *   &lt;warn-bad-nan-comparison&gt;false&lt;/warn-bad-nan-comparison&gt;
      * &lt;/compilerWarnings&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private final Map<String, String> compilerWarnings = new LinkedHashMap<String, String>();
@@ -316,7 +315,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -compiler.source-path
      * </p>
      * List of path elements that form the roots of ActionScript class
-     * 
+     *
      * @parameter expression="${project.compileSourceRoots}"
      * @required
      * @readonly
@@ -328,7 +327,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.compress
      * </p>
-     * 
+     *
      * @parameter expression="${flex.compress}"
      */
     private Boolean compress;
@@ -339,7 +338,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -compiler.conservative
      * </p>
      * compiler algorithm settings
-     * 
+     *
      * @parameter expression="${flex.conservative}"
      */
     private Boolean conservative;
@@ -349,7 +348,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.context-root
      * </p>
-     * 
+     *
      * @parameter expression="${flex.contextRoot}"
      */
     private String contextRoot;
@@ -359,7 +358,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.debug
      * </p>
-     * 
+     *
      * @parameter expression="${flex.debug}"
      */
     private Boolean debug;
@@ -369,7 +368,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -debug-password
      * </p>
-     * 
+     *
      * @parameter expression="${flex.debugPassword}"
      */
     protected String debugPassword;
@@ -379,7 +378,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -default-background-color
      * </p>
-     * 
+     *
      * @parameter expression="${flex.defaultBackgroundColor}"
      */
     private Integer defaultBackgroundColor;
@@ -389,14 +388,14 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -default-frame-rate
      * </p>
-     * 
+     *
      * @parameter expression="${flex.defaultFrameRate}"
      */
     private Integer defaultFrameRate;
 
     /**
      * Default value of resourceBundleList used when it is not defined
-     * 
+     *
      * @parameter default-value= "${project.build.directory}/${project.build.finalName}-rb.properties"
      * @readonly
      */
@@ -408,14 +407,14 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -default-script-limits
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;defaultScriptLimits&gt;
      *   &lt;maxExecutionTime&gt;???&lt;/maxExecutionTime&gt;
      *   &lt;maxRecursionDepth&gt;???&lt;/maxRecursionDepth&gt;
      * &lt;/defaultScriptLimits&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private MavenDefaultScriptLimits defaultScriptLimits;
@@ -426,14 +425,14 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -compiler.defaults-css-url
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;defaultsCssFiles&gt;
      *   &lt;defaultsCssFile&gt;???&lt;/defaultsCssFile&gt;
      *   &lt;defaultsCssFile&gt;???&lt;/defaultsCssFile&gt;
      * &lt;/defaultsCssFiles&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private File[] defaultsCssFiles;
@@ -444,7 +443,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.defaults-css-url
      * </p>
-     * 
+     *
      * @parameter expression="${flex.defaultsCssUrl}"
      */
     private String defaultsCssUrl;
@@ -455,14 +454,14 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -default-size
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;defaultSize&gt;
      *   &lt;height&gt;???&lt;/height&gt;
      *   &lt;width&gt;???&lt;/width&gt;
      * &lt;/defaultSize&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private MavenDefaultSize defaultSize;
@@ -474,7 +473,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -compiler.define
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;defines&gt;
      *   &lt;property&gt;
@@ -487,7 +486,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      *   &lt;/property&gt;
      * &lt;/defines&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private Properties defines;
@@ -497,7 +496,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.disable-incremental-optimizations
      * </p>
-     * 
+     *
      * @parameter expression="${flex.disableIncrementalOptimizations}"
      */
     private Boolean disableIncrementalOptimizations;
@@ -507,7 +506,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.doc
      * </p>
-     * 
+     *
      * @parameter expression="${flex.doc}"
      */
     private Boolean doc;
@@ -517,7 +516,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -dump-config
      * </p>
-     * 
+     *
      * @parameter expression="${flex.dumpConfig}"
      */
     private boolean dumpConfigAttach;
@@ -527,7 +526,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.enable-runtime-design-layers
      * </p>
-     * 
+     *
      * @parameter expression="${flex.enableRuntimeDesignLayers}"
      */
     private Boolean enableRuntimeDesignLayers;
@@ -537,7 +536,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.enable-swc-version-filtering
      * </p>
-     * 
+     *
      * @parameter expression="${flex.enableSwcVersionFiltering}"
      */
     private Boolean enableSwcVersionFiltering;
@@ -548,7 +547,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.es
      * </p>
-     * 
+     *
      * @parameter expression="${flex.es}"
      */
     private Boolean es;
@@ -559,7 +558,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -compiler.extensions.extension
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;extensions&gt;
      *   &lt;extension&gt;
@@ -576,7 +575,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      *   &lt;/extension&gt;
      * &lt;/extensions&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private MavenExtension[] extensions;
@@ -587,21 +586,21 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -externs
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;externs&gt;
      *   &lt;extern&gt;???&lt;/extern&gt;
      *   &lt;extern&gt;???&lt;/extern&gt;
      * &lt;/externs&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private String[] externs;
 
     /**
      * The name of the compiled file
-     * 
+     *
      * @parameter default-name="${project.build.finalName}" expression="${flex.finalName}"
      */
     protected String finalName;
@@ -612,7 +611,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -compiler.fonts.*
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;fonts&gt;
      *   &lt;advancedAntiAliasing&gt;true&lt;/advancedAntiAliasing&gt;
@@ -628,7 +627,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      *   &lt;maxGlyphsPerFace&gt;1000&lt;/maxGlyphsPerFace&gt;
      * &lt;/fonts&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private MavenFontsConfiguration fonts;
@@ -638,7 +637,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -runtime-shared-library-settings.force-rsls
      * </p>
-     * 
+     *
      * @parameter
      */
     private String[] forceRsls;
@@ -649,7 +648,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -frames.frame
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;frames&gt;
      *   &lt;frame&gt;
@@ -661,7 +660,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      *   &lt;/frame&gt;
      * &lt;/frames&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private MavenFrame[] frames;
@@ -671,7 +670,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -framework
      * </p>
-     * 
+     *
      * @parameter expression="${flex.framework}"
      */
     private String framework;
@@ -681,7 +680,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.generate-abstract-syntax-tree
      * </p>
-     * 
+     *
      * @parameter expression="${flex.generateAbstractSyntaxTree}"
      */
     private Boolean generateAbstractSyntaxTree;
@@ -691,7 +690,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -generated-frame-loader
      * </p>
-     * 
+     *
      * @parameter expression="${flex.generateFrameLoader}"
      */
     private Boolean generateFrameLoader;
@@ -701,7 +700,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.headless-server
      * </p>
-     * 
+     *
      * @parameter expression="${flex.headlessServer}"
      */
     private Boolean headlessServer;
@@ -710,9 +709,9 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * EXTREMELLY UN-ADVISIBLE. When true, flexmojos will check if the compiler and the framework versions match.
      * Usually, you must use the same compiler and framework versions. Set this to true to avoid this check. EXTREMELLY
      * UN-ADVISIBLE.
-     * 
+     *
      * @parameter default-value="false"
-     *            expression="${flex.iKnowWhatImDoingPleaseBreakMyBuildIwontBlameFlexmojosForStopWorking}"
+     * expression="${flex.iKnowWhatImDoingPleaseBreakMyBuildIwontBlameFlexmojosForStopWorking}"
      */
     private boolean iKnowWhatImDoingPleaseBreakMyBuildIwontBlameFlexmojosForStopWorking;
 
@@ -721,7 +720,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -include-inheritance-dependencies-only
      * </p>
-     * 
+     *
      * @parameter expression="${flex.includeInheritanceDependenciesOnly}"
      */
     private Boolean includeInheritanceDependenciesOnly;
@@ -732,14 +731,14 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -include-resource-bundles
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;includeResourceBundles&gt;
      *   &lt;rb&gt;SharedResources&lt;/rb&gt;
      *   &lt;rb&gt;Collections&lt;/rb&gt;
      * &lt;/includeResourceBundles&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     protected List<String> includeResourceBundles;
@@ -750,14 +749,14 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -includes
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;includes&gt;
      *   &lt;include&gt;???&lt;/include&gt;
      *   &lt;include&gt;???&lt;/include&gt;
      * &lt;/includes&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private String[] includes;
@@ -767,7 +766,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.incremental
      * </p>
-     * 
+     *
      * @parameter expression="${flex.incremental}"
      */
     private Boolean incremental;
@@ -778,7 +777,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.isolate-styles
      * </p>
-     * 
+     *
      * @parameter expression="${flex.isolateStyles}"
      */
     private Boolean isolateStyles;
@@ -788,7 +787,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.java-profiler-class
      * </p>
-     * 
+     *
      * @parameter expression="${flex.javaProfilerClass}"
      */
     private String javaProfilerClass;
@@ -798,7 +797,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.keep-all-type-selectors
      * </p>
-     * 
+     *
      * @parameter expression="${flex.keepAllTypeSelectors}"
      */
     private Boolean keepAllTypeSelectors;
@@ -809,14 +808,14 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -compiler.keep-as3-metadata
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;keepAs3Metadatas&gt;
      *   &lt;keepAs3Metadata&gt;Bindable&lt;/keepAs3Metadata&gt;
      *   &lt;keepAs3Metadata&gt;Events&lt;/keepAs3Metadata&gt;
      * &lt;/keepAs3Metadatas&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private String[] keepAs3Metadatas;
@@ -826,7 +825,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.keep-generated-actionscript
      * </p>
-     * 
+     *
      * @parameter expression="${flex.keepGeneratedActionscript}"
      */
     private Boolean keepGeneratedActionscript;
@@ -836,7 +835,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.keep-generated-signatures
      * </p>
-     * 
+     *
      * @parameter expression="${flex.keepGeneratedSignatures}"
      */
     private Boolean keepGeneratedSignatures;
@@ -846,7 +845,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -lazy-init
      * </p>
-     * 
+     *
      * @parameter expression="${flex.lazyInit}"
      */
     private Boolean lazyInit;
@@ -859,7 +858,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
     /**
      * When true flexmojos will automatically lookup for licenses folling this documentation
      * http://livedocs.adobe.com/flex/3/html/help.html?content=05B_Security_03 .html#140756
-     * 
+     *
      * @parameter default-value="true" expression="${flex.licenseLocalLookup}"
      */
     private boolean licenseLocalLookup;
@@ -870,20 +869,20 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -licenses.license
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;licenses&gt;
      *   &lt;flexbuilder3&gt;xxxx-xxxx-xxxx-xxxx&lt;/flexbuilder3&gt;
      * &lt;/licenses&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private Map<String, String> licenses;
 
     /**
      * When true the link report will be attached to maven reactor
-     * 
+     *
      * @parameter expression="${flex.linkReportAttach}"
      */
     private boolean linkReportAttach;
@@ -894,7 +893,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -load-config
      * </p>
      * Overwrite loadConfigs when defined!
-     * 
+     *
      * @parameter expression="${flex.loadConfig}"
      */
     private File loadConfig;
@@ -905,14 +904,14 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -load-config
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;loadConfigs&gt;
      *   &lt;loadConfig&gt;???&lt;/loadConfig&gt;
      *   &lt;loadConfig&gt;???&lt;/loadConfig&gt;
      * &lt;/loadConfigs&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private File[] loadConfigs;
@@ -921,7 +920,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Sets a list of artifacts to omit from linking when building an application. This is equivalent to using the
      * <code>load-externs</code> option of the mxmlc or compc compilers.<BR>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;loadExterns&gt;
      *   &lt;loadExtern&gt;
@@ -936,9 +935,9 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      *   &lt;/loadExtern&gt;
      * &lt;/loadExterns&gt;
      * </pre>
-     * 
-     * @deprecated use dependency with type "xml" and classifier "link-report"
+     *
      * @parameter
+     * @deprecated use dependency with type "xml" and classifier "link-report"
      */
     @Deprecated
     protected MavenArtifact[] loadExterns;
@@ -949,20 +948,20 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -compiler.locale
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;localesCompiled&gt;
      *   &lt;locale&gt;en_US&lt;/locale&gt;
      * &lt;/localesCompiled&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private String[] localesCompiled;
 
     /**
      * Relative path where the locales should be created
-     * 
+     *
      * @parameter expression="${flex.localesOutputPath}"
      */
     private String localesOutputPath;
@@ -973,24 +972,24 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * No equivalent parameter
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;localesRuntime&gt;
      *   &lt;locale&gt;en_US&lt;/locale&gt;
      * &lt;/localesRuntime&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private String[] localesRuntime;
 
     /**
      * Define the base path to locate resouce bundle files Accept some special tokens:
-     * 
+     * <p/>
      * <pre>
      * {locale}     - replace by locale name
      * </pre>
-     * 
+     *
      * @parameter default-value="${basedir}/src/main/locales/{locale}"
      */
     protected File localesSourcePath;
@@ -1000,7 +999,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.memory-usage-factor
      * </p>
-     * 
+     *
      * @parameter expression="${flex.memoryUsageFactor}"
      */
     private Integer memoryUsageFactor;
@@ -1011,7 +1010,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to: -metadata.*
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;metadata&gt;
      *   &lt;contributors&gt;
@@ -1037,7 +1036,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      *   &lt;title&gt;???&lt;/title&gt;
      * &lt;/metadata&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private MavenMetadataConfiguration metadata;
@@ -1048,7 +1047,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.mxml.minimum-supported-version
      * </p>
-     * 
+     *
      * @parameter expression="${flex.minimumSupportedVersion}"
      */
     private String minimumSupportedVersion;
@@ -1058,7 +1057,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.mobile
      * </p>
-     * 
+     *
      * @parameter expression="${flex.mobile}"
      */
     private Boolean mobile;
@@ -1069,7 +1068,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -compiler.namespaces.namespace
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;namespaces&gt;
      *   &lt;namespace&gt;
@@ -1078,7 +1077,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      *   &lt;/namespace&gt;
      * &lt;/namespaces&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private MavenNamespace[] namespaces;
@@ -1088,7 +1087,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.omit-trace-statements
      * </p>
-     * 
+     *
      * @parameter expression="${flex.omitTraceStatements}"
      */
     private Boolean omitTraceStatements;
@@ -1098,7 +1097,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.optimize
      * </p>
-     * 
+     *
      * @parameter expression="${flex.optimize}"
      */
     private Boolean optimize;
@@ -1107,7 +1106,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * policyFileUrls array of policy file URLs. Each entry in the rslUrls array must have a corresponding entry in this
      * array. A policy file may be needed in order to allow the player to read an RSL from another domain. If a policy
      * file is not required, then set it to an empty string. Accept some special tokens:
-     * 
+     * <p/>
      * <pre>
      * {contextRoot}        - replace by defined context root
      * {groupId}            - replace by library groupId
@@ -1115,16 +1114,16 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * {version}            - replace by library version
      * {extension}          - replace by library extension swf or swz
      * </pre>
-     * 
+     * <p/>
      * <BR>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;policyFileUrls&gt;
      *   &lt;url&gt;/{contextRoot}/rsl/policy-{artifactId}-{version}.xml&lt;/url&gt;
      * &lt;/policyFileUrls&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private String[] policyFileUrls;
@@ -1136,7 +1135,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.preloader
      * </p>
-     * 
+     *
      * @parameter expression="${flex.preloader}"
      */
     private String preloader;
@@ -1146,7 +1145,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.mxml.qualified-type-selectors
      * </p>
-     * 
+     *
      * @parameter expression="${flex.qualifiedTypeSelectors}"
      */
     private Boolean qualifiedTypeSelectors;
@@ -1156,7 +1155,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -raw-metadata
      * </p>
-     * 
+     *
      * @parameter expression="${flex.rawMetadata}"
      */
     private String rawMetadata;
@@ -1166,7 +1165,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -remove-unused-rsls
      * </p>
-     * 
+     *
      * @parameter expression="${flex.removeUnusedRsls}"
      */
     private Boolean removeUnusedRsls;
@@ -1176,7 +1175,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.report-missing-required-skin-parts-as-warnings
      * </p>
-     * 
+     *
      * @parameter expression="${flex.reportMissingRequiredSkinPartsAsWarnings}"
      */
     private Boolean reportMissingRequiredSkinPartsAsWarnings;
@@ -1186,14 +1185,14 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -resource-bundle-list
      * </p>
-     * 
+     *
      * @parameter expression="${flex.resourceBundleList}"
      */
     private File resourceBundleList;
 
     /**
      * Pattern to be used for locales resurce bundles names generation. Accepts special tokens:
-     * 
+     * <p/>
      * <pre>
      * {locale}     - replace by locale name
      * {artifactId} - replace by artifactId
@@ -1201,7 +1200,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * {version}    - replace by version
      * {classifier} - replace by classifier
      * </pre>
-     * 
+     *
      * @parameter
      */
     protected String resourceBundleNames;
@@ -1212,7 +1211,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.resource-hack
      * </p>
-     * 
+     *
      * @parameter expression="${flex.resourceHack}"
      */
     private Boolean resourceHack;
@@ -1220,7 +1219,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
     /**
      * rslUrls array of URLs. The first RSL URL in the list is the primary RSL. The remaining RSL URLs will only be
      * loaded if the primary RSL fails to load. Accept some special tokens:
-     * 
+     * <p/>
      * <pre>
      * {contextRoot}        - replace by defined context root
      * {groupId}            - replace by library groupId
@@ -1230,16 +1229,16 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * {classifier}         - replace by library classifier swf or swz
      * {hard-version}       - replace by library timestamped version (for -SNAPSHOT artifacts only and if timestamped is available)
      * </pre>
-     * 
+     * <p/>
      * default-value="/{contextRoot}/rsl/{artifactId}-{version}.{extension}" <BR>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;rslUrls&gt;
      *   &lt;url&gt;/{contextRoot}/rsl/{artifactId}-{classifier}-{version}.{extension}&lt;/url&gt;
      * &lt;/rslUrls&gt;
      * </pre>
-     * 
+     *
      * @parameter
      */
     private String[] rslUrls;
@@ -1249,7 +1248,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.services
      * </p>
-     * 
+     *
      * @parameter expression="${flex.services}"
      */
     private File services;
@@ -1259,7 +1258,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -warnings
      * </p>
-     * 
+     *
      * @parameter expression="${flex.showWarnings}"
      */
     private Boolean showWarnings;
@@ -1269,14 +1268,14 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.signature-directory
      * </p>
-     * 
+     *
      * @parameter expression="${flex.signatureDirectory}"
      */
     private File signatureDirectory;
 
     /**
      * When true the size report will be attached to maven reactor
-     * 
+     *
      * @parameter expression="${flex.sizeReportAttach}"
      */
     private boolean sizeReportAttach;
@@ -1286,7 +1285,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -static-link-runtime-shared-libraries
      * </p>
-     * 
+     *
      * @parameter expression="${flex.staticLinkRuntimeSharedLibraries}"
      */
     private Boolean staticLinkRuntimeSharedLibraries;
@@ -1296,7 +1295,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.strict
      * </p>
-     * 
+     *
      * @parameter expression="${flex.strict}"
      */
     private Boolean strict;
@@ -1306,7 +1305,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -swc-checksum
      * </p>
-     * 
+     *
      * @parameter expression="${flex.swcChecksum}"
      */
     private Boolean swcChecksum;
@@ -1316,7 +1315,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -swf-version
      * </p>
-     * 
+     *
      * @parameter expression="${flex.swfVersion}"
      */
     private Integer swfVersion;
@@ -1327,7 +1326,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -target-player
      * </p>
-     * 
+     *
      * @parameter expression="${flex.targetPlayer}"
      */
     private String targetPlayer;
@@ -1338,17 +1337,17 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * Equivalent to -compiler.theme
      * </p>
      * Usage:
-     * 
+     * <p/>
      * <pre>
      * &lt;themes&gt;
      *    &lt;theme&gt;css/main.css&lt;/theme&gt;
      * &lt;/themes&gt;
      * </pre>
-     * 
+     * <p/>
      * If you are using SWC theme should be better keep it's version controlled, so is advised to use a dependency with
      * theme scope.<BR>
      * Like this:
-     * 
+     * <p/>
      * <pre>
      * &lt;dependency&gt;
      *   &lt;groupId&gt;com.acme&lt;/groupId&gt;
@@ -1366,7 +1365,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * 3 - if you don't do either of the above steps, flexmojos will attempt to automatically include a theme for you
      * based on your dependencies. (if you depend upon mx.swc halo will be included, if you depend upon spark.swc -
      * spark.css theme will be included)
-     * 
+     *
      * @parameter
      */
     private String[] themes;
@@ -1377,7 +1376,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -tools-locale
      * </p>
-     * 
+     *
      * @parameter expression="${flex.toolsLocale}" default-value="en_US"
      */
     protected String toolsLocale;
@@ -1387,7 +1386,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.translation-format
      * </p>
-     * 
+     *
      * @parameter expression="${flex.translationFormat}"
      */
     private String translationFormat;
@@ -1397,7 +1396,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -use-direct-blit
      * </p>
-     * 
+     *
      * @parameter expression="${flex.useDirectBlit}"
      */
     private Boolean useDirectBlit;
@@ -1407,7 +1406,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.use-gpu
      * </p>
-     * 
+     *
      * @parameter expression="${flex.useGpu}"
      */
     private Boolean useGpu;
@@ -1417,7 +1416,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -use-network
      * </p>
-     * 
+     *
      * @parameter expression="${flex.useNetwork}"
      */
     private Boolean useNetwork;
@@ -1427,7 +1426,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.use-resource-bundle-metadata
      * </p>
-     * 
+     *
      * @parameter expression="${flex.useResourceBundleMetadata}"
      */
     private Boolean useResourceBundleMetadata;
@@ -1437,7 +1436,7 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -compiler.verbose-stacktraces
      * </p>
-     * 
+     *
      * @parameter expression="${flex.verboseStacktraces}"
      */
     private Boolean verboseStacktraces;
@@ -1447,669 +1446,563 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
      * <p>
      * Equivalent to -verify-digests
      * </p>
-     * 
+     *
      * @parameter expression="${flex.verifyDigests}"
      */
     private Boolean verifyDigests;
 
-    protected Artifact adaptResourceBundle( final Artifact baseRbSwc, String requestedLocale )
-    {
-        getLog().debug( "Adapting resource bundle " + baseRbSwc.getArtifactId() + ":" + baseRbSwc.getClassifier()
-                            + " to " + requestedLocale );
+    /**
+     * This is equilvalent to the <code>library-path</code> option of the mxmlc or compc compilers.<BR>
+     * Usage:
+     * <p/>
+     * <pre>
+     * &lt;libraryPaths&gt;
+     *   &lt;libraryPath&gt;assets&lt;/libraryPath&gt;
+     *   &lt;libraryPath&gt;themes/modern.swc&lt;/libraryPath&gt;
+     * &lt;/libraryPaths&gt;
+     * </pre>
+     *
+     * @parameter
+     */
+    private String[] libraryPaths;
+
+    /**
+     * This is equilvalent to the <code>include-libraries</code> option of the mxmlc or compc compilers.<BR>
+     * Usage:
+     * <p/>
+     * <pre>
+     * &lt;includeLibs&gt;
+     *   &lt;includeLib&gt;assets/asset.swc&lt;/includeLib&gt;
+     * &lt;/includeLibs&gt;
+     * </pre>
+     *
+     * @parameter
+     */
+    private String[] includeLibs;
+
+    protected Artifact adaptResourceBundle(final Artifact baseRbSwc, String requestedLocale) {
+        getLog().debug("Adapting resource bundle " + baseRbSwc.getArtifactId() + ":" + baseRbSwc.getClassifier()
+                + " to " + requestedLocale);
 
         Artifact rbSwc;
-        try
-        {
+        try {
             rbSwc =
-                resolve( baseRbSwc.getGroupId(), baseRbSwc.getArtifactId(), baseRbSwc.getVersion(),
-                         baseRbSwc.getClassifier() + "2" + requestedLocale, baseRbSwc.getType() );
-        }
-        catch ( RuntimeMavenResolutionException e )
-        {
+                    resolve(baseRbSwc.getGroupId(), baseRbSwc.getArtifactId(), baseRbSwc.getVersion(),
+                            baseRbSwc.getClassifier() + "2" + requestedLocale, baseRbSwc.getType());
+        } catch (RuntimeMavenResolutionException e) {
             rbSwc = e.getArtifact();
         }
 
-        if ( rbSwc.isResolved() )
-        {
+        if (rbSwc.isResolved()) {
             return rbSwc;
         }
 
         File dest;
-        try
-        {
-            UnArchiver unzip = archiverManager.getUnArchiver( "zip" );
-            unzip.setSourceFile( baseRbSwc.getFile() );
-            dest = FileUtils.createTempFile( baseRbSwc.getArtifactId(), requestedLocale, getOutputDirectory() );
-            unzip.extract( "locale/" + baseRbSwc.getClassifier(), dest );
-        }
-        catch ( Exception e )
-        {
-            throw new MavenRuntimeException( "Unable to extract base locale", e );
+        try {
+            UnArchiver unzip = archiverManager.getUnArchiver("zip");
+            unzip.setSourceFile(baseRbSwc.getFile());
+            dest = FileUtils.createTempFile(baseRbSwc.getArtifactId(), requestedLocale, getOutputDirectory());
+            unzip.extract("locale/" + baseRbSwc.getClassifier(), dest);
+        } catch (Exception e) {
+            throw new MavenRuntimeException("Unable to extract base locale", e);
         }
 
-        File resourceBundleBaseDir = new File( dest, "locale/" + baseRbSwc.getClassifier() );
+        File resourceBundleBaseDir = new File(dest, "locale/" + baseRbSwc.getClassifier());
         List<String> bundles = new ArrayList<String>();
-        for ( String bundle : resourceBundleBaseDir.list() )
-        {
-            bundles.add( bundle.replace( ".properties", "" ) );
+        for (String bundle : resourceBundleBaseDir.list()) {
+            bundles.add(bundle.replace(".properties", ""));
         }
 
-        ICompcConfiguration cfg = mock( ICompcConfiguration.class, RETURNS_NULL );
-        when( cfg.getLoadConfig() ).thenReturn( getLoadConfig() );
-        when( cfg.getIncludeResourceBundles() ).thenReturn( bundles );
-        String output = PathUtil.path( baseRbSwc.getFile() ).replace( baseRbSwc.getClassifier(), rbSwc.getClassifier() );
-        when( cfg.getOutput() ).thenReturn( output );
+        ICompcConfiguration cfg = mock(ICompcConfiguration.class, RETURNS_NULL);
+        when(cfg.getLoadConfig()).thenReturn(getLoadConfig());
+        when(cfg.getIncludeResourceBundles()).thenReturn(bundles);
+        String output = PathUtil.path(baseRbSwc.getFile()).replace(baseRbSwc.getClassifier(), rbSwc.getClassifier());
+        when(cfg.getOutput()).thenReturn(output);
 
-        ICompilerConfiguration compilerCfg = mock( ICompilerConfiguration.class, RETURNS_NULL );
-        when( compilerCfg.getTheme() ).thenReturn( Collections.EMPTY_LIST );
-        when( compilerCfg.getFontsConfiguration() ).thenReturn( getFontsConfiguration() );
-        when( compilerCfg.getLocale() ).thenReturn( new String[] { requestedLocale } );
-        when( compilerCfg.getSourcePath() ).thenReturn( new File[] { resourceBundleBaseDir } );
-        when( compilerCfg.getExternalLibraryPath() ).thenReturn( this.getExternalLibraryPath() );
-        when( compilerCfg.getLibraryPath() ).thenReturn( this.getLibraryPath( false ) );
+        ICompilerConfiguration compilerCfg = mock(ICompilerConfiguration.class, RETURNS_NULL);
+        when(compilerCfg.getTheme()).thenReturn(Collections.EMPTY_LIST);
+        when(compilerCfg.getFontsConfiguration()).thenReturn(getFontsConfiguration());
+        when(compilerCfg.getLocale()).thenReturn(new String[]{requestedLocale});
+        when(compilerCfg.getSourcePath()).thenReturn(new File[]{resourceBundleBaseDir});
+        when(compilerCfg.getExternalLibraryPath()).thenReturn(this.getExternalLibraryPath());
+        when(compilerCfg.getLibraryPath()).thenReturn(this.getLibraryPath(false));
 
-        when( cfg.getCompilerConfiguration() ).thenReturn( compilerCfg );
+        when(cfg.getCompilerConfiguration()).thenReturn(compilerCfg);
 
-        try
-        {
-            checkResult( compiler.compileSwc( cfg, true ) );
-        }
-        catch ( Exception e )
-        {
-            throw new MavenRuntimeException( "Unable to compile adapted resource bundle", e );
+        try {
+            checkResult(compiler.compileSwc(cfg, true));
+        } catch (Exception e) {
+            throw new MavenRuntimeException("Unable to compile adapted resource bundle", e);
         }
 
-        rbSwc.setFile( new File( output ) );
-        rbSwc.setResolved( true );
+        rbSwc.setFile(new File(output));
+        rbSwc.setResolved(true);
         return rbSwc;
     }
 
-    protected Map<String, String> calculateRuntimeLibraryPath( Artifact artifact, String[] rslUrls,
-                                                               String[] policyFileUrls )
-    {
-        getLog().debug( "runtime libraries: id: " + artifact.getArtifactId() );
+    protected Map<String, String> calculateRuntimeLibraryPath(Artifact artifact, String[] rslUrls,
+                                                              String[] policyFileUrls) {
+        getLog().debug("runtime libraries: id: " + artifact.getArtifactId());
 
         String scope = artifact.getScope();
         final String extension;
-        if ( CACHING.equals( scope ) )
-        {
+        if (CACHING.equals(scope)) {
             extension = SWZ;
-        }
-        else
-        {
+        } else {
             extension = SWF;
         }
 
         Map<String, String> paths = new LinkedHashMap<String, String>();
-        for ( int i = 0; i < rslUrls.length; i++ )
-        {
+        for (int i = 0; i < rslUrls.length; i++) {
             String rsl = rslUrls[i];
             String policy;
-            if ( i < policyFileUrls.length )
-            {
+            if (i < policyFileUrls.length) {
                 policy = policyFileUrls[i];
-            }
-            else
-            {
+            } else {
                 policy = null;
             }
 
-            rsl = MavenUtils.interpolateRslUrl( rsl, artifact, extension, contextRoot );
-            policy = MavenUtils.interpolateRslUrl( policy, artifact, extension, contextRoot );
+            rsl = MavenUtils.interpolateRslUrl(rsl, artifact, extension, contextRoot);
+            policy = MavenUtils.interpolateRslUrl(policy, artifact, extension, contextRoot);
 
-            getLog().debug( "RSL url: " + rsl + " - " + policy );
-            paths.put( rsl, policy );
+            getLog().debug("RSL url: " + rsl + " - " + policy);
+            paths.put(rsl, policy);
         }
 
         return paths;
     }
 
-    @SuppressWarnings( "unchecked" )
+    @SuppressWarnings("unchecked")
     @Override
-    public C clone()
-    {
-        try
-        {
+    public C clone() {
+        try {
             C clone = (C) super.clone();
             clone.cache = new LinkedHashMap<String, Object>();
             return clone;
-        }
-        catch ( CloneNotSupportedException e )
-        {
-            throw new IllegalStateException( "The class '" + getClass() + "' is supposed to be clonable", e );
+        } catch (CloneNotSupportedException e) {
+            throw new IllegalStateException("The class '" + getClass() + "' is supposed to be clonable", e);
         }
     }
 
-    @SuppressWarnings( "unchecked" )
-    protected void configureResourceBundle( String locale, AbstractFlexCompilerMojo<?, ?> cfg )
-    {
-        cfg.localesCompiled = new String[] { locale };
+    @SuppressWarnings("unchecked")
+    protected void configureResourceBundle(String locale, AbstractFlexCompilerMojo<?, ?> cfg) {
+        cfg.localesCompiled = new String[]{locale};
         cfg.localesRuntime = null;
-        if ( locale.contains( "," ) )
-        {
-            cfg.classifier = locale.split( "," )[0];
-        }
-        else
-        {
+        if (locale.contains(",")) {
+            cfg.classifier = locale.split(",")[0];
+        } else {
             cfg.classifier = locale;
         }
 
-        if ( resourceBundleNames != null )
-        {
+        if (resourceBundleNames != null) {
             cfg.finalName =
-                MavenUtils.getRuntimeLocaleOutputName( resourceBundleNames, project.getArtifact(), cfg.classifier );
+                    MavenUtils.getRuntimeLocaleOutputName(resourceBundleNames, project.getArtifact(), cfg.classifier);
         }
 
         cfg.includeResourceBundles = getResourceBundleListContent();
-        cfg.getCache().put( EXTERNAL_LIBRARY_PATH, MavenUtils.getFiles( getDependencies( type( SWC ) ) ) );
-        cfg.getCache().put( LIBRARY_PATH, MavenUtils.getFiles( cfg.getCompiledResouceBundles() ) );
+        cfg.getCache().put(EXTERNAL_LIBRARY_PATH, MavenUtils.getFiles(getDependencies(type(SWC))));
+        cfg.getCache().put(LIBRARY_PATH, MavenUtils.getFiles(cfg.getCompiledResouceBundles()));
 
-        if ( localesOutputPath != null )
-        {
-            cfg.getCache().put( TARGET_DIRECTORY, new File( getTargetDirectory(), localesOutputPath ) );
+        if (localesOutputPath != null) {
+            cfg.getCache().put(TARGET_DIRECTORY, new File(getTargetDirectory(), localesOutputPath));
         }
     }
 
-    @FlexCompatibility( minVersion = "4.0.0.11420" )
-    private void configureThemeHaloSwc( List<File> themes )
-    {
-        File haloSwc = resolveThemeFile( "mx", "halo", "swc", "Halo" );
-        if ( haloSwc == null )
-        {
+    @FlexCompatibility(minVersion = "4.0.0.11420")
+    private void configureThemeHaloSwc(List<File> themes) {
+        File haloSwc = resolveThemeFile("mx", "halo", "swc", "Halo");
+        if (haloSwc == null) {
             return;
         }
 
-        getLog().warn( "Adding halo.swc theme because mx.swc was included as a dependency" );
-        themes.add( haloSwc );
+        getLog().warn("Adding halo.swc theme because mx.swc was included as a dependency");
+        themes.add(haloSwc);
     }
 
-    @FlexCompatibility( minVersion = "4.0.0.11420" )
-    private void configureThemeSparkCss( List<File> themes )
-    {
-        File sparkCss = resolveThemeFile( "spark", "spark", "css", "Spark" );
-        if ( sparkCss == null )
-        {
+    @FlexCompatibility(minVersion = "4.0.0.11420")
+    private void configureThemeSparkCss(List<File> themes) {
+        File sparkCss = resolveThemeFile("spark", "spark", "css", "Spark");
+        if (sparkCss == null) {
             return;
         }
 
-        getLog().warn( "Adding spark.css theme because spark.swc was included as a dependency" );
-        themes.add( sparkCss );
+        getLog().warn("Adding spark.css theme because spark.swc was included as a dependency");
+        themes.add(sparkCss);
     }
 
-    public abstract Result doCompile( CFG cfg, boolean synchronize )
-        throws Exception;
+    public abstract Result doCompile(CFG cfg, boolean synchronize)
+            throws Exception;
 
-    private Artifact doLocalizationChain( String[] locales, String requestedLocale, Artifact beacon,
-                                          Artifact requestRbSwc )
-    {
-        getLog().info( "Resolving resource bundle for '" + beacon + "' using localization chain." );
+    private Artifact doLocalizationChain(String[] locales, String requestedLocale, Artifact beacon,
+                                         Artifact requestRbSwc) {
+        getLog().info("Resolving resource bundle for '" + beacon + "' using localization chain.");
 
-        for ( String locale : locales )
-        {
+        for (String locale : locales) {
             Artifact rbSwc;
-            try
-            {
+            try {
                 rbSwc =
-                    resolve( beacon.getGroupId(), beacon.getArtifactId(), beacon.getVersion(), locale, beacon.getType() );
-            }
-            catch ( RuntimeMavenResolutionException e )
-            {
+                        resolve(beacon.getGroupId(), beacon.getArtifactId(), beacon.getVersion(), locale, beacon.getType());
+            } catch (RuntimeMavenResolutionException e) {
                 rbSwc = e.getArtifact();
             }
 
-            if ( rbSwc.isResolved() )
-            {
-                if ( !requestedLocale.equals( locale ) )
-                {
-                    getLog().info( "Resolved resource bundle for '" + beacon + "' using localization chain. The '"
-                                       + locale + "' will be used to build the missing '" + requestedLocale + "'" );
-                    return adaptResourceBundle( rbSwc, requestedLocale );
+            if (rbSwc.isResolved()) {
+                if (!requestedLocale.equals(locale)) {
+                    getLog().info("Resolved resource bundle for '" + beacon + "' using localization chain. The '"
+                            + locale + "' will be used to build the missing '" + requestedLocale + "'");
+                    return adaptResourceBundle(rbSwc, requestedLocale);
                 }
 
                 return rbSwc;
             }
         }
 
-        throw new MavenRuntimeException( "Unable to resolve resource bundle '" + beacon + "' for '" + requestedLocale
-            + "'" );
+        throw new MavenRuntimeException("Unable to resolve resource bundle '" + beacon + "' for '" + requestedLocale
+                + "'");
     }
 
-    protected Result executeCompiler( CFG cfg, boolean synchronize )
-        throws MojoExecutionException, MojoFailureException
-    {
+    protected Result executeCompiler(CFG cfg, boolean synchronize)
+            throws MojoExecutionException, MojoFailureException {
         Result result;
-        try
-        {
-            result = doCompile( cfg, synchronize );
-        }
-        catch ( Exception e )
-        {
-            throw new MojoExecutionException( e.getMessage(), e );
+        try {
+            result = doCompile(cfg, synchronize);
+        } catch (Exception e) {
+            throw new MojoExecutionException(e.getMessage(), e);
         }
 
-        if ( synchronize )
-        {
-            checkResult( result );
+        if (synchronize) {
+            checkResult(result);
         }
 
         return result;
     }
 
-    public Boolean getAccessible()
-    {
+    public Boolean getAccessible() {
         return accessible;
     }
 
-    public String getActionscriptFileEncoding()
-    {
+    public String getActionscriptFileEncoding() {
         return actionscriptFileEncoding;
     }
 
-    public Boolean getAdjustOpdebugline()
-    {
+    public Boolean getAdjustOpdebugline() {
         return adjustOpdebugline;
     }
 
-    public Boolean getAllowDuplicateDefaultStyleDeclarations()
-    {
+    public Boolean getAllowDuplicateDefaultStyleDeclarations() {
         return allowDuplicateDefaultStyleDeclarations;
     }
 
-    public Boolean getAllowSourcePathOverlap()
-    {
+    public Boolean getAllowSourcePathOverlap() {
         return allowSourcePathOverlap;
     }
 
-    public IApplicationDomain[] getApplicationDomain()
-    {
+    public IApplicationDomain[] getApplicationDomain() {
         return this.applicationDomains;
     }
 
-    public Boolean getArchiveClassesAndAssets()
-    {
+    public Boolean getArchiveClassesAndAssets() {
         return archiveClassesAndAssets;
     }
 
-    public Boolean getAs3()
-    {
+    public Boolean getAs3() {
         return as3;
     }
 
-    public Boolean getBenchmark()
-    {
+    public Boolean getBenchmark() {
         return benchmark;
     }
 
-    public Integer getBenchmarkCompilerDetails()
-    {
-        if ( benchmarkCompilerDetails == null )
-        {
+    public Integer getBenchmarkCompilerDetails() {
+        if (benchmarkCompilerDetails == null) {
             return null;
         }
 
-        if ( benchmarkCompilerDetails != 0 && benchmarkCompilerDetails != 1 && benchmarkCompilerDetails != 5 )
-        {
-            throw new IllegalArgumentException( "Invalid benchmarck compiler details level: '"
-                + benchmarkCompilerDetails + "', it does accept 0 = none, 1 = light, 5 = verbose" );
+        if (benchmarkCompilerDetails != 0 && benchmarkCompilerDetails != 1 && benchmarkCompilerDetails != 5) {
+            throw new IllegalArgumentException("Invalid benchmarck compiler details level: '"
+                    + benchmarkCompilerDetails + "', it does accept 0 = none, 1 = light, 5 = verbose");
         }
 
         return benchmarkCompilerDetails;
     }
 
-    public Long getBenchmarkTimeFilter()
-    {
+    public Long getBenchmarkTimeFilter() {
         return benchmarkTimeFilter;
     }
 
-    public String getClassifier()
-    {
+    public String getClassifier() {
         return classifier;
     }
 
-    public String getCompatibilityVersion()
-    {
-        if ( compatibilityVersion == null )
-        {
+    public String getCompatibilityVersion() {
+        if (compatibilityVersion == null) {
             return null;
         }
 
-        String[] versionStringParts = compatibilityVersion.split( "\\." );
-        if ( versionStringParts.length != 3 )
-        {
-            throw new MavenRuntimeException( "compatibilityVersion (" + compatibilityVersion
-                + ") isn't in the required <major>.<minor>.<revision> pattern." );
-        }
-        else
-        {
-            try
-            {
-                for ( int i = 0; i < 3; i++ )
-                {
-                    Integer.parseInt( versionStringParts[i] );
+        String[] versionStringParts = compatibilityVersion.split("\\.");
+        if (versionStringParts.length != 3) {
+            throw new MavenRuntimeException("compatibilityVersion (" + compatibilityVersion
+                    + ") isn't in the required <major>.<minor>.<revision> pattern.");
+        } else {
+            try {
+                for (int i = 0; i < 3; i++) {
+                    Integer.parseInt(versionStringParts[i]);
                 }
-            }
-            catch ( NumberFormatException e )
-            {
-                throw new MavenRuntimeException( "compatibilityVersion contained a non-numeric segment", e );
+            } catch (NumberFormatException e) {
+                throw new MavenRuntimeException("compatibilityVersion contained a non-numeric segment", e);
             }
         }
         return compatibilityVersion;
     }
 
-    @SuppressWarnings( "unchecked" )
-    protected Collection<Artifact> getCompiledResouceBundles()
-    {
-        if ( this.getLocale() == null )
-        {
+    @SuppressWarnings("unchecked")
+    protected Collection<Artifact> getCompiledResouceBundles() {
+        if (this.getLocale() == null) {
             return null;
         }
 
         Collection<Artifact> rbsSwc = new LinkedHashSet<Artifact>();
 
-        Set<Artifact> beacons = getDependencies( type( RB_SWC ) );
+        Set<Artifact> beacons = getDependencies(type(RB_SWC));
 
         String[] localeChains = this.localesCompiled;
-        if ( localeChains == null )
-        {
+        if (localeChains == null) {
             localeChains = getLocale();
         }
 
         // TODO for for for for if for for, too many nested blocks, improve this
-        for ( Artifact beacon : beacons )
-        {
-            for ( String localeChain : localeChains )
-            {
+        for (Artifact beacon : beacons) {
+            for (String localeChain : localeChains) {
                 String[] locales;
-                if ( localeChain.contains( "," ) )
-                {
-                    locales = localeChain.split( "," );
-                }
-                else
-                {
-                    locales = new String[] { localeChain };
+                if (localeChain.contains(",")) {
+                    locales = localeChain.split(",");
+                } else {
+                    locales = new String[]{localeChain};
                 }
 
                 String requestedLocale = locales[0];
 
                 Artifact requestedRbSwc;
-                try
-                {
+                try {
                     requestedRbSwc =
-                        resolve( beacon.getGroupId(), beacon.getArtifactId(), beacon.getVersion(), requestedLocale,
-                                 beacon.getType() );
-                }
-                catch ( RuntimeMavenResolutionException e )
-                {
+                            resolve(beacon.getGroupId(), beacon.getArtifactId(), beacon.getVersion(), requestedLocale,
+                                    beacon.getType());
+                } catch (RuntimeMavenResolutionException e) {
                     requestedRbSwc = e.getArtifact();
                 }
 
                 Artifact resultRbSwc;
-                if ( requestedRbSwc.isResolved() )
-                {
+                if (requestedRbSwc.isResolved()) {
                     resultRbSwc = requestedRbSwc;
-                }
-                else if ( locales.length > 1 )
-                {
-                    resultRbSwc = doLocalizationChain( locales, requestedLocale, beacon, requestedRbSwc );
-                }
-                else
-                {
-                    throw new MavenRuntimeException( "Missing resource bundle '" + requestedRbSwc + "'" );
+                } else if (locales.length > 1) {
+                    resultRbSwc = doLocalizationChain(locales, requestedLocale, beacon, requestedRbSwc);
+                } else {
+                    throw new MavenRuntimeException("Missing resource bundle '" + requestedRbSwc + "'");
                 }
 
-                rbsSwc.add( resultRbSwc );
+                rbsSwc.add(resultRbSwc);
             }
         }
 
         return rbsSwc;
     }
 
-    public ICompilerConfiguration getCompilerConfiguration()
-    {
+    public ICompilerConfiguration getCompilerConfiguration() {
         return this;
     }
 
-    protected File getCompilerOutput()
-    {
-        File output = new File( getTargetDirectory(), getFinalName() + "." + getProjectType() );
+    protected File getCompilerOutput() {
+        File output = new File(getTargetDirectory(), getFinalName() + "." + getProjectType());
         output.getParentFile().mkdirs();
         return output;
     }
 
-    public Map<String, Boolean> getCompilerWarnings()
-    {
+    public Map<String, Boolean> getCompilerWarnings() {
         // converts the <String, String> map into a <String, Boolean> one
         Map<String, Boolean> compilerWarnings = new LinkedHashMap<String, Boolean>();
 
         Set<Entry<String, String>> warns = this.compilerWarnings.entrySet();
-        for ( Entry<String, String> entry : warns )
-        {
-            compilerWarnings.put( entry.getKey(), Boolean.valueOf( entry.getValue() ) );
+        for (Entry<String, String> entry : warns) {
+            compilerWarnings.put(entry.getKey(), Boolean.valueOf(entry.getValue()));
         }
 
         return compilerWarnings;
     }
 
-    public Boolean getCompress()
-    {
+    public Boolean getCompress() {
         return compress;
     }
 
-    public Boolean getConservative()
-    {
+    public Boolean getConservative() {
         return conservative;
     }
 
-    public String getContextRoot()
-    {
+    public String getContextRoot() {
         return contextRoot;
     }
 
-    public String[] getContributor()
-    {
-        if ( this.metadata != null && this.metadata.getContributor() != null )
-        {
+    public String[] getContributor() {
+        if (this.metadata != null && this.metadata.getContributor() != null) {
             return this.metadata.getContributor();
         }
 
         List<Contributor> contributors = project.getContributors();
-        if ( contributors == null || contributors.isEmpty() )
-        {
+        if (contributors == null || contributors.isEmpty()) {
             return null;
         }
 
         String[] contributorsName = new String[contributors.size()];
-        for ( int i = 0; i < contributorsName.length; i++ )
-        {
-            contributorsName[i] = contributors.get( i ).getName();
+        for (int i = 0; i < contributorsName.length; i++) {
+            contributorsName[i] = contributors.get(i).getName();
         }
 
         return contributorsName;
     }
 
-    public String[] getCreator()
-    {
-        if ( this.metadata != null && this.metadata.getCreator() != null )
-        {
+    public String[] getCreator() {
+        if (this.metadata != null && this.metadata.getCreator() != null) {
             return this.metadata.getCreator();
         }
 
         List<Developer> developers = project.getDevelopers();
-        if ( developers == null || developers.isEmpty() )
-        {
+        if (developers == null || developers.isEmpty()) {
             return null;
         }
 
         String[] creatorsName = new String[developers.size()];
-        for ( int i = 0; i < creatorsName.length; i++ )
-        {
-            creatorsName[i] = developers.get( i ).getName();
+        for (int i = 0; i < creatorsName.length; i++) {
+            creatorsName[i] = developers.get(i).getName();
         }
 
         return creatorsName;
     }
 
-    public String getDate()
-    {
-        if ( this.metadata != null && this.metadata.getDate() != null )
-        {
+    public String getDate() {
+        if (this.metadata != null && this.metadata.getDate() != null) {
             return this.metadata.getDate();
         }
 
         // If incremental compilation is enabled then we don't use current time
-        return ((incremental != null) && incremental) ? "0:00" : DATE_FORMAT.format( new Date() );
+        return ((incremental != null) && incremental) ? "0:00" : DATE_FORMAT.format(new Date());
     }
 
-    public Boolean getDebug()
-    {
+    public Boolean getDebug() {
         return debug;
     }
 
-    public String getDebugPassword()
-    {
+    public String getDebugPassword() {
         return debugPassword;
     }
 
-    public Integer getDefaultBackgroundColor()
-    {
+    public Integer getDefaultBackgroundColor() {
         return defaultBackgroundColor;
     }
 
-    public Integer getDefaultFrameRate()
-    {
+    public Integer getDefaultFrameRate() {
         return defaultFrameRate;
     }
 
-    public IDefaultScriptLimits getDefaultScriptLimits()
-    {
+    public IDefaultScriptLimits getDefaultScriptLimits() {
         return defaultScriptLimits;
     }
 
-    public List<String> getDefaultsCssFiles()
-    {
-        return PathUtil.pathsList( defaultsCssFiles );
+    public List<String> getDefaultsCssFiles() {
+        return PathUtil.pathsList(defaultsCssFiles);
     }
 
-    public String getDefaultsCssUrl()
-    {
+    public String getDefaultsCssUrl() {
         return defaultsCssUrl;
     }
 
-    public IDefaultSize getDefaultSize()
-    {
+    public IDefaultSize getDefaultSize() {
         return defaultSize;
     }
 
-    public IDefine[] getDefine()
-    {
-        if ( defines == null )
-        {
+    public IDefine[] getDefine() {
+        if (defines == null) {
             return null;
         }
 
         List<IDefine> keys = new ArrayList<IDefine>();
         Set<Entry<Object, Object>> entries = this.defines.entrySet();
-        for ( final Entry<Object, Object> entry : entries )
-        {
-            keys.add( new IDefine()
-            {
-                public String name()
-                {
+        for (final Entry<Object, Object> entry : entries) {
+            keys.add(new IDefine() {
+                public String name() {
                     return entry.getKey().toString();
                 }
 
-                public String value()
-                {
+                public String value() {
                     return entry.getValue().toString();
                 }
-            } );
+            });
         }
 
-        return keys.toArray( new IDefine[keys.size()] );
+        return keys.toArray(new IDefine[keys.size()]);
     }
 
-    public String getDescription()
-    {
-        if ( this.metadata != null )
-        {
+    public String getDescription() {
+        if (this.metadata != null) {
             return this.metadata.getDescription();
         }
 
         return project.getDescription();
     }
 
-    public Boolean getDisableIncrementalOptimizations()
-    {
+    public Boolean getDisableIncrementalOptimizations() {
         return disableIncrementalOptimizations;
     }
 
-    public Boolean getDoc()
-    {
+    public Boolean getDoc() {
         return doc;
     }
 
-    public String getDumpConfig()
-    {
-        File dumpConfig = new File( getTargetDirectory(), getFinalName() + "-" + CONFIGS + "." + XML );
+    public String getDumpConfig() {
+        File dumpConfig = new File(getTargetDirectory(), getFinalName() + "-" + CONFIGS + "." + XML);
 
-        if ( dumpConfigAttach )
-        {
-            if ( getClassifier() != null )
-            {
-                getLog().warn( "Config dump is not attached for artifacts with classifier" );
-            }
-            else
-            {
-                projectHelper.attachArtifact( project, XML, CONFIGS, dumpConfig );
+        if (dumpConfigAttach) {
+            if (getClassifier() != null) {
+                getLog().warn("Config dump is not attached for artifacts with classifier");
+            } else {
+                projectHelper.attachArtifact(project, XML, CONFIGS, dumpConfig);
             }
         }
-        return PathUtil.path( dumpConfig );
+        return PathUtil.path(dumpConfig);
     }
 
-    public Boolean getEnableRuntimeDesignLayers()
-    {
+    public Boolean getEnableRuntimeDesignLayers() {
         return enableRuntimeDesignLayers;
     }
 
-    public Boolean getEnableSwcVersionFiltering()
-    {
+    public Boolean getEnableSwcVersionFiltering() {
         return enableSwcVersionFiltering;
     }
 
-    public Boolean getEs()
-    {
+    public Boolean getEs() {
         return es;
     }
 
-    public IExtension[] getExtension()
-    {
-        if ( extensions == null )
-        {
+    public IExtension[] getExtension() {
+        if (extensions == null) {
             return null;
         }
 
         IExtension[] extensions = new IExtension[this.extensions.length];
-        for ( int i = 0; i < extensions.length; i++ )
-        {
+        for (int i = 0; i < extensions.length; i++) {
             final MavenExtension extension = this.extensions[i];
 
-            if ( extension.getExtensionArtifact() == null )
-            {
-                throw new IllegalArgumentException( "Extension artifact is required!" );
+            if (extension.getExtensionArtifact() == null) {
+                throw new IllegalArgumentException("Extension artifact is required!");
             }
 
-            extensions[i] = new IExtension()
-            {
-                public File extension()
-                {
+            extensions[i] = new IExtension() {
+                public File extension() {
                     MavenArtifact a = extension.getExtensionArtifact();
                     Artifact resolvedArtifact =
-                        resolve( a.getGroupId(), a.getArtifactId(), a.getVersion(), a.getClassifier(), a.getType() );
+                            resolve(a.getGroupId(), a.getArtifactId(), a.getVersion(), a.getClassifier(), a.getType());
                     return resolvedArtifact.getFile();
                 }
 
-                public String[] parameters()
-                {
+                public String[] parameters() {
                     return extension.getParameters();
                 }
             };
@@ -2118,46 +2011,37 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
         return extensions;
     }
 
-    public IExtensionsConfiguration getExtensionsConfiguration()
-    {
+    public IExtensionsConfiguration getExtensionsConfiguration() {
         return this;
     }
 
-    @SuppressWarnings( "unchecked" )
-    public File[] getExternalLibraryPath()
-    {
-        if ( SWC.equals( getProjectType() ) )
-        {
+    @SuppressWarnings("unchecked")
+    public File[] getExternalLibraryPath() {
+        if (SWC.equals(getProjectType())) {
             Matcher<? super Artifact> swcs =
-                allOf( anyOf( type( SWC ), type( ANE ) ), //
-                       anyOf( scope( EXTERNAL ), scope( CACHING ), scope( RSL ), scope( COMPILE ),
-                              scope( nullValue( String.class ) ) )//
-                );
-            return MavenUtils.getFiles( getDependencies( swcs, not( GLOBAL_MATCHER ) ), getGlobalArtifactCollection() );
-        }
-        else
-        {
-            return MavenUtils.getFiles( getDependencies( not( GLOBAL_MATCHER ),//
-                                                         allOf( anyOf( type( SWC ), type( ANE ) ),//
-                                                                anyOf( scope( EXTERNAL ), scope( CACHING ), scope( RSL ) ) ) ),
-                                        getGlobalArtifactCollection() );
+                    allOf(anyOf(type(SWC), type(ANE)), //
+                            anyOf(scope(EXTERNAL), scope(CACHING), scope(RSL), scope(COMPILE),
+                                    scope(nullValue(String.class)))//
+                    );
+            return MavenUtils.getFiles(getDependencies(swcs, not(GLOBAL_MATCHER)), getGlobalArtifactCollection());
+        } else {
+            return MavenUtils.getFiles(getDependencies(not(GLOBAL_MATCHER),//
+                    allOf(anyOf(type(SWC), type(ANE)),//
+                            anyOf(scope(EXTERNAL), scope(CACHING), scope(RSL)))),
+                    getGlobalArtifactCollection());
         }
     }
 
-    public List<String> getExterns()
-    {
-        if ( externs == null )
-        {
+    public List<String> getExterns() {
+        if (externs == null) {
             return null;
         }
 
-        return Arrays.asList( externs );
+        return Arrays.asList(externs);
     }
 
-    public String getFinalName()
-    {
-        if ( finalName == null )
-        {
+    public String getFinalName() {
+        if (finalName == null) {
             String c = getClassifier() == null ? "" : "-" + getClassifier();
             return project.getBuild().getFinalName() + c;
         }
@@ -2165,290 +2049,233 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
         return finalName;
     }
 
-    public IFontsConfiguration getFontsConfiguration()
-    {
-        if ( this.fonts == null )
-        {
+    public IFontsConfiguration getFontsConfiguration() {
+        if (this.fonts == null) {
             this.fonts = new MavenFontsConfiguration();
         }
-        return this.fonts.toFontsConfiguration( getOutputDirectory() );
+        return this.fonts.toFontsConfiguration(getOutputDirectory());
     }
 
-    public String[] getForceRsls()
-    {
+    public String[] getForceRsls() {
         return forceRsls;
     }
 
-    public IFrame[] getFrame()
-    {
+    public IFrame[] getFrame() {
         return frames;
     }
 
-    public IFramesConfiguration getFramesConfiguration()
-    {
+    public IFramesConfiguration getFramesConfiguration() {
         return this;
     }
 
-    public String getFramework()
-    {
+    public String getFramework() {
         return framework;
     }
 
-    public Boolean getGenerateAbstractSyntaxTree()
-    {
+    public Boolean getGenerateAbstractSyntaxTree() {
         return generateAbstractSyntaxTree;
     }
 
-    public Boolean getGenerateFrameLoader()
-    {
+    public Boolean getGenerateFrameLoader() {
         return generateFrameLoader;
     }
 
-    public Collection<Artifact> getGlobalArtifactCollection()
-    {
-        synchronized ( lock )
-        {
-            return Collections.singletonList( getGlobalArtifact() );
+    public Collection<Artifact> getGlobalArtifactCollection() {
+        synchronized (lock) {
+            return Collections.singletonList(getGlobalArtifact());
         }
     }
 
-    public Boolean getHeadlessServer()
-    {
-        if ( headlessServer == null )
-        {
+    public Boolean getHeadlessServer() {
+        if (headlessServer == null) {
             return GraphicsEnvironment.isHeadless();
         }
 
         return headlessServer;
     }
 
-    public final String[] getHelp()
-    {
+    public final String[] getHelp() {
         // must return null, otherwise will prevent compiler execution
         return null;
     }
 
-    public Boolean getIncludeInheritanceDependenciesOnly()
-    {
+    public Boolean getIncludeInheritanceDependenciesOnly() {
         return includeInheritanceDependenciesOnly;
     }
 
-    @SuppressWarnings( "unchecked" )
-    public File[] getIncludeLibraries()
-    {
-        return MavenUtils.getFiles( getDependencies( anyOf( type( SWC ), type( ANE ) ), scope( INTERNAL ), not( GLOBAL_MATCHER ) ) );
+    @SuppressWarnings("unchecked")
+    public File[] getIncludeLibraries() {
+        File[] includeLibs =  MavenUtils.getFiles(getDependencies(anyOf(type(SWC), type(ANE)), scope(INTERNAL), not(GLOBAL_MATCHER)));
+        return addIncludedLibraries(includeLibs);
     }
 
-    public List<String> getIncludes()
-    {
-        if ( includes == null )
-        {
+    public List<String> getIncludes() {
+        if (includes == null) {
             return null;
         }
-        return Arrays.asList( includes );
+        return Arrays.asList(includes);
     }
 
-    public Boolean getIncremental()
-    {
+    public Boolean getIncremental() {
         return incremental;
     }
 
-    public Boolean getIsolateStyles()
-    {
+    public Boolean getIsolateStyles() {
         return isolateStyles;
     }
 
-    public String getJavaProfilerClass()
-    {
+    public String getJavaProfilerClass() {
         return javaProfilerClass;
     }
 
-    public Boolean getKeepAllTypeSelectors()
-    {
+    public Boolean getKeepAllTypeSelectors() {
         return keepAllTypeSelectors;
     }
 
-    public String[] getKeepAs3Metadata()
-    {
+    public String[] getKeepAs3Metadata() {
         return keepAs3Metadatas;
     }
 
-    public Boolean getKeepGeneratedActionscript()
-    {
+    public Boolean getKeepGeneratedActionscript() {
         return keepGeneratedActionscript;
     }
 
-    public Boolean getKeepGeneratedSignatures()
-    {
+    public Boolean getKeepGeneratedSignatures() {
         return keepGeneratedSignatures;
     }
 
-    public String[] getLanguage()
-    {
-        if ( this.metadata != null && this.metadata.getLanguage() != null )
-        {
+    public String[] getLanguage() {
+        if (this.metadata != null && this.metadata.getLanguage() != null) {
             return this.metadata.getLanguage();
         }
 
-        if ( getLocale() == null || getLocale().length == 0 )
-        {
+        if (getLocale() == null || getLocale().length == 0) {
             return null;
         }
 
         return getLocale();
     }
 
-    public Boolean getLazyInit()
-    {
+    public Boolean getLazyInit() {
         return lazyInit;
     }
 
-    public File[] getLibraryPath()
-    {
-        return getLibraryPath( true );
+    public File[] getLibraryPath() {
+        return getLibraryPath(true);
     }
 
-    @SuppressWarnings( "unchecked" )
-    private File[] getLibraryPath( boolean includeResourceBundle )
-    {
+    @SuppressWarnings("unchecked")
+    private File[] getLibraryPath(boolean includeResourceBundle) {
+        File[] libraryPath;
         Collection<Artifact> resourceBundle =
-            includeResourceBundle ? getCompiledResouceBundles() : Collections.EMPTY_LIST;
-        if ( SWC.equals( getProjectType() ) )
-        {
-            return MavenUtils.getFiles( getDependencies( anyOf( type( SWC ), type( ANE ) ), scope( MERGED ), not( GLOBAL_MATCHER ) ),
-                                        resourceBundle );
+                includeResourceBundle ? getCompiledResouceBundles() : Collections.EMPTY_LIST;
+        if (SWC.equals(getProjectType())) {
+            libraryPath = MavenUtils.getFiles(getDependencies(anyOf(type(SWC), type(ANE)), scope(MERGED), not(GLOBAL_MATCHER)),
+                    resourceBundle);
+        } else {
+            libraryPath =  MavenUtils.getFiles(getDependencies(anyOf(type(SWC), type(ANE)),//
+                    anyOf(scope(MERGED), scope(COMPILE),
+                            scope(nullValue(String.class))),//
+                    not(GLOBAL_MATCHER)),//
+                    resourceBundle);
         }
-        else
-        {
-            return MavenUtils.getFiles( getDependencies( anyOf( type( SWC ), type( ANE ) ),//
-                                                         anyOf( scope( MERGED ), scope( COMPILE ),
-                                                                scope( nullValue( String.class ) ) ),//
-                                                         not( GLOBAL_MATCHER ) ),//
-                                        resourceBundle );
-        }
+        return addMergedLibraries(libraryPath);
     }
 
-    public ILicense[] getLicense()
-    {
-        try
-        {
-            Class.forName( "flex.license.License" );
-        }
-        catch ( ClassNotFoundException e )
-        {
-            getLog().warn( "Unable to find license.jar on plugin classpath.  No license will be added.  Check wiki for instructions about how to add it:\n\t"
-                               + "https://docs.sonatype.org/display/FLEXMOJOS/FAQ#FAQ-1.3" );
+    public ILicense[] getLicense() {
+        try {
+            Class.forName("flex.license.License");
+        } catch (ClassNotFoundException e) {
+            getLog().warn("Unable to find license.jar on plugin classpath.  No license will be added.  Check wiki for instructions about how to add it:\n\t"
+                    + "https://docs.sonatype.org/display/FLEXMOJOS/FAQ#FAQ-1.3");
             return null;
         }
 
         Map<String, String> licenses = new LinkedHashMap<String, String>();
 
-        if ( licenseLocalLookup )
-        {
-            licenses.putAll( licenseCalculator.getInstalledLicenses() );
+        if (licenseLocalLookup) {
+            licenses.putAll(licenseCalculator.getInstalledLicenses());
         }
 
-        if ( this.licenses != null )
-        {
-            licenses.putAll( this.licenses );
+        if (this.licenses != null) {
+            licenses.putAll(this.licenses);
         }
 
-        if ( licenses.isEmpty() )
-        {
+        if (licenses.isEmpty()) {
             return null;
         }
 
         Set<Entry<String, String>> entries = licenses.entrySet();
         List<ILicense> keys = new ArrayList<ILicense>();
-        for ( final Entry<String, String> entry : entries )
-        {
-            keys.add( new ILicense()
-            {
-                public String product()
-                {
+        for (final Entry<String, String> entry : entries) {
+            keys.add(new ILicense() {
+                public String product() {
                     return entry.getKey();
                 }
 
-                public String serialNumber()
-                {
+                public String serialNumber() {
                     return entry.getValue();
                 }
-            } );
+            });
         }
 
-        return keys.toArray( new ILicense[keys.size()] );
+        return keys.toArray(new ILicense[keys.size()]);
     }
 
-    public ILicensesConfiguration getLicensesConfiguration()
-    {
+    public ILicensesConfiguration getLicensesConfiguration() {
         return this;
     }
 
-    public String getLinkReport()
-    {
-        File linkReport = new File( getTargetDirectory(), getFinalName() + "-" + LINK_REPORT + "." + XML );
+    public String getLinkReport() {
+        File linkReport = new File(getTargetDirectory(), getFinalName() + "-" + LINK_REPORT + "." + XML);
 
-        if ( linkReportAttach )
-        {
-            if ( getClassifier() != null )
-            {
-                getLog().warn( "Link report is not attached for artifacts with classifier" );
-            }
-            else
-            {
-                projectHelper.attachArtifact( project, XML, LINK_REPORT, linkReport );
+        if (linkReportAttach) {
+            if (getClassifier() != null) {
+                getLog().warn("Link report is not attached for artifacts with classifier");
+            } else {
+                projectHelper.attachArtifact(project, XML, LINK_REPORT, linkReport);
             }
         }
-        return PathUtil.path( linkReport );
+        return PathUtil.path(linkReport);
     }
 
-    public String[] getLoadConfig()
-    {
-        return PathUtil.paths( ConfigurationResolver.resolveConfiguration( loadConfigs, loadConfig, configDirectory ) );
+    public String[] getLoadConfig() {
+        return PathUtil.paths(ConfigurationResolver.resolveConfiguration(loadConfigs, loadConfig, configDirectory));
     }
 
-    @SuppressWarnings( { "unchecked", "deprecation" } )
-    public String[] getLoadExterns()
-    {
+    @SuppressWarnings({"unchecked", "deprecation"})
+    public String[] getLoadExterns() {
         Collection<Artifact> artifacts = new LinkedHashSet<Artifact>();
 
-        Set<Artifact> dependencies = getDependencies( classifier( LINK_REPORT ), type( XML ) );
-        if ( !dependencies.isEmpty() )
-        {
-            artifacts.addAll( dependencies );
+        Set<Artifact> dependencies = getDependencies(classifier(LINK_REPORT), type(XML));
+        if (!dependencies.isEmpty()) {
+            artifacts.addAll(dependencies);
         }
 
-        if ( loadExterns != null )
-        {
-            for ( MavenArtifact loadExtern : loadExterns )
-            {
+        if (loadExterns != null) {
+            for (MavenArtifact loadExtern : loadExterns) {
                 Artifact resolvedArtifact =
-                    resolve( loadExtern.getGroupId(), loadExtern.getArtifactId(), loadExtern.getVersion(), LINK_REPORT,
-                             XML );
-                artifacts.add( resolvedArtifact );
+                        resolve(loadExtern.getGroupId(), loadExtern.getArtifactId(), loadExtern.getVersion(), LINK_REPORT,
+                                XML);
+                artifacts.add(resolvedArtifact);
             }
 
         }
 
-        if ( artifacts.isEmpty() )
-        {
+        if (artifacts.isEmpty()) {
             return null;
         }
 
-        return PathUtil.paths( MavenUtils.getFilesSet( artifacts ) );
+        return PathUtil.paths(MavenUtils.getFilesSet(artifacts));
     }
 
-    public String[] getLocale()
-    {
-        if ( localesCompiled != null )
-        {
+    public String[] getLocale() {
+        if (localesCompiled != null) {
             String[] locales = new String[localesCompiled.length];
-            for ( int i = 0; i < localesCompiled.length; i++ )
-            {
+            for (int i = 0; i < localesCompiled.length; i++) {
                 String locale = localesCompiled[i];
-                if ( locale.contains( "," ) )
-                {
-                    locale = locale.split( "," )[0];
+                if (locale.contains(",")) {
+                    locale = locale.split(",")[0];
                 }
                 locales[i] = locale;
             }
@@ -2456,276 +2283,220 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
         }
 
         // if there are runtime locales, no need for compiled locales
-        if ( getLocalesRuntime() != null )
-        {
-            return new String[] {};
+        if (getLocalesRuntime() != null) {
+            return new String[]{};
         }
 
         return null;
     }
 
-    public String[] getLocalesRuntime()
-    {
-        if ( localesRuntime == null )
-        {
+    public String[] getLocalesRuntime() {
+        if (localesRuntime == null) {
             return null;
         }
 
-        try
-        {
-            File rbBeacon = new File( getTargetDirectory(), getFinalName() + "." + RB_SWC );
-            FileUtils.copyURLToFile( getClass().getResource( "/rb.swc" ), rbBeacon );
-            getLog().info( "Installing resource bundle beacon: " + rbBeacon );
-            projectHelper.attachArtifact( project, RB_SWC, rbBeacon );
-        }
-        catch ( IOException e )
-        {
-            throw new MavenRuntimeException( "Failed to create beacon resource bundle", e );
+        try {
+            File rbBeacon = new File(getTargetDirectory(), getFinalName() + "." + RB_SWC);
+            FileUtils.copyURLToFile(getClass().getResource("/rb.swc"), rbBeacon);
+            getLog().info("Installing resource bundle beacon: " + rbBeacon);
+            projectHelper.attachArtifact(project, RB_SWC, rbBeacon);
+        } catch (IOException e) {
+            throw new MavenRuntimeException("Failed to create beacon resource bundle", e);
         }
 
         return localesRuntime;
     }
 
-    public ILocalizedDescription[] getLocalizedDescription()
-    {
-        if ( this.metadata != null )
-        {
+    public ILocalizedDescription[] getLocalizedDescription() {
+        if (this.metadata != null) {
             return this.metadata.getLocalizedDescription();
         }
 
         return null;
     }
 
-    public ILocalizedTitle[] getLocalizedTitle()
-    {
-        if ( this.metadata != null )
-        {
+    public ILocalizedTitle[] getLocalizedTitle() {
+        if (this.metadata != null) {
             return this.metadata.getLocalizedTitle();
         }
 
         return null;
     }
 
-    public Integer getMemoryUsageFactor()
-    {
+    public Integer getMemoryUsageFactor() {
         return memoryUsageFactor;
     }
 
-    public IMetadataConfiguration getMetadataConfiguration()
-    {
+    public IMetadataConfiguration getMetadataConfiguration() {
         return this;
     }
 
-    public String getMinimumSupportedVersion()
-    {
+    public String getMinimumSupportedVersion() {
         return this.minimumSupportedVersion;
     }
 
-    public Boolean getMobile()
-    {
+    public Boolean getMobile() {
         return mobile;
     }
 
-    public IMxmlConfiguration getMxmlConfiguration()
-    {
+    public IMxmlConfiguration getMxmlConfiguration() {
         return this;
     }
 
-    public INamespace[] getNamespace()
-    {
+    public INamespace[] getNamespace() {
         List<INamespace> namespaces = new ArrayList<INamespace>();
-        if ( this.namespaces != null )
-        {
-            namespaces.addAll( Arrays.asList( this.namespaces ) );
+        if (this.namespaces != null) {
+            namespaces.addAll(Arrays.asList(this.namespaces));
         }
 
         File dir = getUnpackedFrameworkConfig();
 
-        if ( dir == null )
-        {
+        if (dir == null) {
             return this.namespaces;
         }
 
         Reader cfg = null;
-        try
-        {
-            cfg = new FileReader( new File( dir, "flex-config.xml" ) );
+        try {
+            cfg = new FileReader(new File(dir, "flex-config.xml"));
 
-            Xpp3Dom dom = Xpp3DomBuilder.build( cfg );
+            Xpp3Dom dom = Xpp3DomBuilder.build(cfg);
 
-            dom = dom.getChild( "compiler" );
+            dom = dom.getChild("compiler");
 
-            dom = dom.getChild( "namespaces" );
+            dom = dom.getChild("namespaces");
 
             Xpp3Dom[] defaultNamespaces = dom.getChildren();
-            for ( Xpp3Dom xpp3Dom : defaultNamespaces )
-            {
-                String uri = xpp3Dom.getChild( "uri" ).getValue();
-                String manifestName = xpp3Dom.getChild( "manifest" ).getValue();
-                File manifest = new File( dir, manifestName );
+            for (Xpp3Dom xpp3Dom : defaultNamespaces) {
+                String uri = xpp3Dom.getChild("uri").getValue();
+                String manifestName = xpp3Dom.getChild("manifest").getValue();
+                File manifest = new File(dir, manifestName);
 
-                namespaces.add( new MavenNamespace( uri, manifest ) );
+                namespaces.add(new MavenNamespace(uri, manifest));
             }
-        }
-        catch ( Exception e )
-        {
-            throw new MavenRuntimeException( "Unable to retrieve flex default namespaces!", e );
-        }
-        finally
-        {
-            IOUtil.close( cfg );
+        } catch (Exception e) {
+            throw new MavenRuntimeException("Unable to retrieve flex default namespaces!", e);
+        } finally {
+            IOUtil.close(cfg);
         }
 
-        return namespaces.toArray( new INamespace[0] );
+        return namespaces.toArray(new INamespace[0]);
     }
 
-    public INamespacesConfiguration getNamespacesConfiguration()
-    {
+    public INamespacesConfiguration getNamespacesConfiguration() {
         return this;
     }
 
-    protected List<String> getNamespacesUri()
-    {
-        if ( namespaces == null || namespaces.length == 0 )
-        {
+    protected List<String> getNamespacesUri() {
+        if (namespaces == null || namespaces.length == 0) {
             return null;
         }
 
         List<String> uris = new ArrayList<String>();
-        for ( INamespace namespace : namespaces )
-        {
-            uris.add( namespace.uri() );
+        for (INamespace namespace : namespaces) {
+            uris.add(namespace.uri());
         }
 
         return uris;
     }
 
-    public Boolean getOmitTraceStatements()
-    {
+    public Boolean getOmitTraceStatements() {
         return omitTraceStatements;
     }
 
-    public Boolean getOptimize()
-    {
+    public Boolean getOptimize() {
         return optimize;
     }
 
-    public String getOutput()
-    {
+    public String getOutput() {
         File output = getCompilerOutput();
-        if ( getClassifier() != null )
-        {
-            projectHelper.attachArtifact( project, getProjectType(), getClassifier(), output );
-        }
-        else if ( !getProjectType().equals( packaging ) )
-        {
-            projectHelper.attachArtifact( project, getProjectType(), output );
-        }
-        else
-        {
-            project.getArtifact().setFile( output );
+        if (getClassifier() != null) {
+            projectHelper.attachArtifact(project, getProjectType(), getClassifier(), output);
+        } else if (!getProjectType().equals(packaging)) {
+            projectHelper.attachArtifact(project, getProjectType(), output);
+        } else {
+            project.getArtifact().setFile(output);
         }
 
-        return PathUtil.path( output );
+        return PathUtil.path(output);
     }
 
-    public String[] getPolicyFileUrls()
-    {
-        if ( policyFileUrls == null )
-        {
+    public String[] getPolicyFileUrls() {
+        if (policyFileUrls == null) {
             return new String[0];
         }
         return policyFileUrls;
     }
 
-    public String getPreloader()
-    {
+    public String getPreloader() {
         return preloader;
     }
 
-    public String getProjectType()
-    {
+    public String getProjectType() {
         return packaging;
     }
 
-    public String[] getPublisher()
-    {
-        if ( this.metadata != null )
-        {
+    public String[] getPublisher() {
+        if (this.metadata != null) {
             return this.metadata.getPublisher();
         }
 
         return getCreator();
     }
 
-    public Boolean getQualifiedTypeSelectors()
-    {
+    public Boolean getQualifiedTypeSelectors() {
         return qualifiedTypeSelectors;
     }
 
-    public String getRawMetadata()
-    {
+    public String getRawMetadata() {
         return rawMetadata;
     }
 
-    public Boolean getRemoveUnusedRsls()
-    {
+    public Boolean getRemoveUnusedRsls() {
         return removeUnusedRsls;
     }
 
-    public Boolean getReportInvalidStylesAsWarnings()
-    {
-        return getCompilerWarnings().get( "report-invalid-styles-as-warnings" );
+    public Boolean getReportInvalidStylesAsWarnings() {
+        return getCompilerWarnings().get("report-invalid-styles-as-warnings");
     }
 
-    public Boolean getReportMissingRequiredSkinPartsAsWarnings()
-    {
+    public Boolean getReportMissingRequiredSkinPartsAsWarnings() {
         return reportMissingRequiredSkinPartsAsWarnings;
     }
 
-    public String getResourceBundleList()
-    {
-        return PathUtil.path( getResourceBundleListFile() );
+    public String getResourceBundleList() {
+        return PathUtil.path(getResourceBundleListFile());
     }
 
-    protected List<String> getResourceBundleListContent()
-    {
-        if ( !getResourceBundleListFile().exists() )
-        {
+    protected List<String> getResourceBundleListContent() {
+        if (!getResourceBundleListFile().exists()) {
             return null;
         }
 
         String bundles;
-        try
-        {
-            bundles = FileUtils.fileRead( getResourceBundleListFile() );
-        }
-        catch ( IOException e )
-        {
-            throw new MavenRuntimeException( e );
+        try {
+            bundles = FileUtils.fileRead(getResourceBundleListFile());
+        } catch (IOException e) {
+            throw new MavenRuntimeException(e);
         }
 
-        return Arrays.asList( bundles.substring( 10 ).split( " " ) );
+        return Arrays.asList(bundles.substring(10).split(" "));
     }
 
     /**
      * File content sample:
-     * 
+     * <p/>
      * <pre>
      * bundles = containers core effects skins styles
      * </pre>
-     * 
+     *
      * @return bundle list file
      */
-    protected File getResourceBundleListFile()
-    {
-        if ( resourceBundleList != null )
-        {
+    protected File getResourceBundleListFile() {
+        if (resourceBundleList != null) {
             return resourceBundleList;
         }
 
-        if ( getLocalesRuntime() == null )
-        {
+        if (getLocalesRuntime() == null) {
             return null;
         }
 
@@ -2733,22 +2504,92 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
         return defaultResourceBundleList;
     }
 
-    public Boolean getResourceHack()
-    {
+    public Boolean getResourceHack() {
         return resourceHack;
     }
 
-    public String[] getRslUrls()
-    {
-        if ( rslUrls == null )
-        {
+    public String[] getRslUrls() {
+        if (rslUrls == null) {
             return DEFAULT_RSL_URLS;
         }
         return rslUrls;
     }
 
-    public final String[] getRuntimeSharedLibraries()
-    {
+    /**
+     * Get array of files for libraries to include
+     *
+     * @return Array of library SWCs to include
+     */
+    protected File[] addIncludedLibraries(File[] libs)  {
+        if (includeLibs == null) {
+            return libs;
+        }
+
+        List<File> files = new ArrayList<File>();
+        for (String libName : includeLibs) {
+            File file = new File(libName);
+            if (file.isFile()) {
+                // Check file extension
+                if (!libName.toLowerCase().endsWith(".swc")) {
+                    getLog().warn("<" + libName + "> is not an SWC library");
+                }
+            }
+            // Let MXMLC check further - path might be a directory
+            files.add(new File(libName));
+        }
+        if (libs != null) {
+            for (File lib : libs) {
+                files.add(lib);
+            }
+        }
+        return files.toArray(new File[files.size()]);
+    }
+
+    /**
+     * Get array of files for libraries to merge
+     *
+     * @return Array of library SWCs to merge
+     */
+    protected File[] addMergedLibraries(File[] libs) {
+        if (libraryPaths == null) {
+            return libs;
+        }
+
+        List<File> files = new ArrayList<File>();
+        for (String lib : libraryPaths) {
+            File file = new File(lib);
+            files.addAll(checkLibraryPathChild(file));
+        }
+
+        if (libs != null) {
+            for (File lib : libs) {
+                files.add(lib);
+            }
+        }
+
+        return files.toArray(new File[files.size()]);
+    }
+
+    private List<File> checkLibraryPathChild (File file) {
+        List<File> files = new ArrayList<File>();
+        if (file.isFile()) {
+            // Check file extension
+            if (file.getName().toLowerCase().endsWith(".swc")) {
+                files.add(file);
+            }
+            else {
+                getLog().warn("<" + file.getName() + "> is not an SWC library");
+            }
+        } else if (file.isDirectory()) {
+            for (File child : file.listFiles()) {
+                files.addAll(checkLibraryPathChild(child));
+            }
+        }
+
+       return files;
+    }
+
+    public final String[] getRuntimeSharedLibraries() {
         // Set<Artifact> dependencies = getDependencies( not( GLOBAL_MATCHER
         // ),//
         // anyOf( scope( RSL ), scope( CACHING ), scope( EXTERNAL ) ) );
@@ -2758,15 +2599,13 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
         return null;
     }
 
-    @SuppressWarnings( "unchecked" )
-    public IRuntimeSharedLibraryPath[] getRuntimeSharedLibraryPath()
-    {
+    @SuppressWarnings("unchecked")
+    public IRuntimeSharedLibraryPath[] getRuntimeSharedLibraryPath() {
         // get all the rsl dependencies
-        Set<Artifact> dependencies = getDependencies( not( GLOBAL_MATCHER ),//
-                                                      anyOf( scope( RSL ), scope( CACHING ) ) );
+        Set<Artifact> dependencies = getDependencies(not(GLOBAL_MATCHER),//
+                anyOf(scope(RSL), scope(CACHING)));
 
-        if ( dependencies.isEmpty() )
-        {
+        if (dependencies.isEmpty()) {
             return null;
         }
 
@@ -2774,504 +2613,411 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
         final String[] policyFileUrls = getPolicyFileUrls();
 
         // not sure if all this validation are required
-        if ( rslUrls.length < policyFileUrls.length //
-            && policyFileUrls.length != 0 //
-            && rslUrls.length != policyFileUrls.length //
-            && rslUrls.length != policyFileUrls.length - 1 )
-        {
+        if (rslUrls.length < policyFileUrls.length //
+                && policyFileUrls.length != 0 //
+                && rslUrls.length != policyFileUrls.length //
+                && rslUrls.length != policyFileUrls.length - 1) {
             throw new IllegalArgumentException(
-                                                "The number of elements on RSL Urls and Policy File Urls doesn't match: "
-                                                    + rslUrls.length + "/" + rslUrls.length );
+                    "The number of elements on RSL Urls and Policy File Urls doesn't match: "
+                            + rslUrls.length + "/" + rslUrls.length);
         }
 
         List<IRuntimeSharedLibraryPath> rsls = new ArrayList<IRuntimeSharedLibraryPath>();
-        for ( final Artifact artifact : dependencies )
-        {
+        for (final Artifact artifact : dependencies) {
 
-            rsls.add( new IRuntimeSharedLibraryPath()
-            {
-                public String pathElement()
-                {
+            rsls.add(new IRuntimeSharedLibraryPath() {
+                public String pathElement() {
                     return artifact.getFile().getAbsolutePath();
                 }
 
-                public Map<String, String> rslUrl()
-                {
-                    return calculateRuntimeLibraryPath( artifact, rslUrls, policyFileUrls );
+                public Map<String, String> rslUrl() {
+                    return calculateRuntimeLibraryPath(artifact, rslUrls, policyFileUrls);
                 }
-            } );
+            });
         }
 
-        return rsls.toArray( new IRuntimeSharedLibraryPath[rsls.size()] );
+        return rsls.toArray(new IRuntimeSharedLibraryPath[rsls.size()]);
     }
 
-    public IRuntimeSharedLibrarySettingsConfiguration getRuntimeSharedLibrarySettingsConfiguration()
-    {
+    public IRuntimeSharedLibrarySettingsConfiguration getRuntimeSharedLibrarySettingsConfiguration() {
         return this;
     }
 
-    public String getServices()
-    {
-        if ( services != null )
-        {
-            return PathUtil.path( services );
+    public String getServices() {
+        if (services != null) {
+            return PathUtil.path(services);
         }
 
-        File cfg = new File( configDirectory, "services-config.xml" );
-        if ( cfg.exists() )
-        {
-            return PathUtil.path( cfg );
+        File cfg = new File(configDirectory, "services-config.xml");
+        if (cfg.exists()) {
+            return PathUtil.path(cfg);
         }
         return null;
     }
 
-    public Boolean getShowActionscriptWarnings()
-    {
-        return getCompilerWarnings().get( "show-actionscript-warnings" );
+    public Boolean getShowActionscriptWarnings() {
+        return getCompilerWarnings().get("show-actionscript-warnings");
     }
 
-    public Boolean getShowBindingWarnings()
-    {
-        return getCompilerWarnings().get( "show-binding-warnings" );
+    public Boolean getShowBindingWarnings() {
+        return getCompilerWarnings().get("show-binding-warnings");
     }
 
-    public Boolean getShowDependencyWarnings()
-    {
-        return getCompilerWarnings().get( "show-dependency-warnings" );
+    public Boolean getShowDependencyWarnings() {
+        return getCompilerWarnings().get("show-dependency-warnings");
     }
 
-    public Boolean getShowDeprecationWarnings()
-    {
-        return getCompilerWarnings().get( "show-deprecation-warnings" );
+    public Boolean getShowDeprecationWarnings() {
+        return getCompilerWarnings().get("show-deprecation-warnings");
     }
 
-    public Boolean getShowInvalidCssPropertyWarnings()
-    {
-        return getCompilerWarnings().get( "show-invalid-css-property-warnings" );
+    public Boolean getShowInvalidCssPropertyWarnings() {
+        return getCompilerWarnings().get("show-invalid-css-property-warnings");
     }
 
-    public Boolean getShowShadowedDeviceFontWarnings()
-    {
-        return getCompilerWarnings().get( "show-shadowed-device-font-warnings" );
+    public Boolean getShowShadowedDeviceFontWarnings() {
+        return getCompilerWarnings().get("show-shadowed-device-font-warnings");
     }
 
-    public Boolean getShowUnusedTypeSelectorWarnings()
-    {
-        return getCompilerWarnings().get( "show-unused-type-selector-warnings" );
+    public Boolean getShowUnusedTypeSelectorWarnings() {
+        return getCompilerWarnings().get("show-unused-type-selector-warnings");
     }
 
-    public File getSignatureDirectory()
-    {
+    public File getSignatureDirectory() {
         return signatureDirectory;
     }
 
-    @FlexCompatibility( minVersion = "4.5.0" )
-    public String getSizeReport()
-    {
-        File sizeReport = new File( getTargetDirectory(), getFinalName() + "-" + SIZE_REPORT + "." + XML );
+    @FlexCompatibility(minVersion = "4.5.0")
+    public String getSizeReport() {
+        File sizeReport = new File(getTargetDirectory(), getFinalName() + "-" + SIZE_REPORT + "." + XML);
 
-        if ( sizeReportAttach )
-        {
-            if ( getClassifier() != null )
-            {
-                getLog().warn( "Size report is not attached for artifacts with classifier" );
-            }
-            else
-            {
-                projectHelper.attachArtifact( project, XML, SIZE_REPORT, sizeReport );
+        if (sizeReportAttach) {
+            if (getClassifier() != null) {
+                getLog().warn("Size report is not attached for artifacts with classifier");
+            } else {
+                projectHelper.attachArtifact(project, XML, SIZE_REPORT, sizeReport);
             }
         }
-        return PathUtil.path( sizeReport );
+        return PathUtil.path(sizeReport);
     }
 
-    public File[] getSourcePath()
-    {
+    public File[] getSourcePath() {
         List<File> files = new ArrayList<File>();
 
-        files.addAll( PathUtil.existingFilesList( compileSourceRoots ) );
+        files.addAll(PathUtil.existingFilesList(compileSourceRoots));
 
-        if ( localesCompiled != null )
-        {
-            if ( localesSourcePath.getParentFile().exists() )
-            {
-                files.add( localesSourcePath );
+        if (localesCompiled != null) {
+            if (localesSourcePath.getParentFile().exists()) {
+                files.add(localesSourcePath);
             }
         }
 
-        return files.toArray( new File[0] );
+        return files.toArray(new File[0]);
     }
 
-    public Boolean getStaticLinkRuntimeSharedLibraries()
-    {
+    public Boolean getStaticLinkRuntimeSharedLibraries() {
         return staticLinkRuntimeSharedLibraries;
     }
 
-    public Boolean getStrict()
-    {
+    public Boolean getStrict() {
         return strict;
     }
 
-    public Boolean getSwcChecksum()
-    {
+    public Boolean getSwcChecksum() {
         return swcChecksum;
     }
 
-    @FlexCompatibility( minVersion = "4.5" )
-    public Integer getSwfVersion()
-    {
-        if ( swfVersion != null )
-        {
+    @FlexCompatibility(minVersion = "4.5")
+    public Integer getSwfVersion() {
+        if (swfVersion != null) {
             return swfVersion;
         }
 
         Artifact global = getGlobalArtifact();
-        if ( PLAYER_GLOBAL.equals( global.getArtifactId() ) )
-        {
+        if (PLAYER_GLOBAL.equals(global.getArtifactId())) {
             String playerVersion = global.getClassifier();
-            if ( playerVersion == null )
-            {
+            if (playerVersion == null) {
                 playerVersion = "9";
             }
 
-            if ( VersionUtils.isMinVersionOK( playerVersion, "11" ) )
+            if (VersionUtils.isMinVersionOK(playerVersion, "11"))
                 return 13;
-            if ( VersionUtils.isMinVersionOK( playerVersion, "10.3" ) )
+            if (VersionUtils.isMinVersionOK(playerVersion, "10.3"))
                 return 12;
-            if ( VersionUtils.isMinVersionOK( playerVersion, "10.2" ) )
+            if (VersionUtils.isMinVersionOK(playerVersion, "10.2"))
                 return 11;
-            if ( VersionUtils.isMinVersionOK( playerVersion, "10.1" ) )
+            if (VersionUtils.isMinVersionOK(playerVersion, "10.1"))
                 return 10;
-            if ( VersionUtils.isMinVersionOK( playerVersion, "9" ) )
+            if (VersionUtils.isMinVersionOK(playerVersion, "9"))
                 return 9;
 
-            getLog().warn( "Unable to determine 'swfVersion' for " + global );
+            getLog().warn("Unable to determine 'swfVersion' for " + global);
         }
 
         return null;
     }
 
-    public String getTargetPlayer()
-    {
+    public String getTargetPlayer() {
         return targetPlayer;
     }
 
-    @SuppressWarnings( "unchecked" )
-    public List<String> getTheme()
-    {
+    @SuppressWarnings("unchecked")
+    public List<String> getTheme() {
         List<File> themes = new ArrayList<File>();
         Set<Artifact> themeDependencies =
-            getDependencies( anyOf( type( SWC ), type( CSS ) ), scope( FlexScopes.THEME ) );
-        themes.addAll( asList( MavenUtils.getFiles( themeDependencies ) ) );
+                getDependencies(anyOf(type(SWC), type(CSS)), scope(FlexScopes.THEME));
+        themes.addAll(asList(MavenUtils.getFiles(themeDependencies)));
 
         // if themes are specified in the <themes> configuration
-        if ( this.themes != null )
-        {
-            List<File> files = asList( files( this.themes, getResourcesTargetDirectories() ) );
+        if (this.themes != null) {
+            List<File> files = asList(files(this.themes, getResourcesTargetDirectories()));
             // PathUtil returns nulls when files don't exists.
             // When the contents of the themes list contains paths that
             // don't exist NPEs will be encountered in other parts of the plugin.
             // To avoid this check for nulls here and throw a descriptive error.
             int l = files.size();
-            for ( int i = 0; i < l; i++ )
-            {
-                File file = files.get( i );
-                if ( file == null )
+            for (int i = 0; i < l; i++) {
+                File file = files.get(i);
+                if (file == null)
                     throw new IllegalArgumentException(
-                                                        "The following theme file found in the <theme> section doesn't exist: '"
-                                                            + this.themes[i] + "'." );
+                            "The following theme file found in the <theme> section doesn't exist: '"
+                                    + this.themes[i] + "'.");
             }
-            themes.addAll( files );
+            themes.addAll(files);
         }
 
-        if ( themes.isEmpty() )
-        {
-            getLog().warn( "No themes are explicitly defined in the <theme> section or in any scope=\"theme\" dependencies. "
-                               + "Flexmojos is now attempting to figure out which themes to include. (to avoid this warning "
-                               + "you should explicitly state your theme dependencies)" );
+        if (themes.isEmpty()) {
+            getLog().warn("No themes are explicitly defined in the <theme> section or in any scope=\"theme\" dependencies. "
+                    + "Flexmojos is now attempting to figure out which themes to include. (to avoid this warning "
+                    + "you should explicitly state your theme dependencies)");
 
-            configureThemeSparkCss( themes );
+            configureThemeSparkCss(themes);
         }
-        if ( themes.isEmpty() )
-        {
-            configureThemeHaloSwc( themes );
+        if (themes.isEmpty()) {
+            configureThemeHaloSwc(themes);
         }
 
-        return pathsList( themes );
+        return pathsList(themes);
     }
 
-    public String getTitle()
-    {
-        if ( this.metadata != null )
-        {
+    public String getTitle() {
+        if (this.metadata != null) {
             return this.metadata.getDescription();
         }
 
         return project.getName();
     }
 
-    @FlexCompatibility( minVersion = "4.0.0.13007" )
-    public String getToolsLocale()
-    {
-        if ( toolsLocale == null )
-        {
-            throw new IllegalArgumentException( "Invalid toolsLocale it must be not null and must be in Java format."
-                + "  For example, \"en\" or \"ja_JP\"" );
+    @FlexCompatibility(minVersion = "4.0.0.13007")
+    public String getToolsLocale() {
+        if (toolsLocale == null) {
+            throw new IllegalArgumentException("Invalid toolsLocale it must be not null and must be in Java format."
+                    + "  For example, \"en\" or \"ja_JP\"");
         }
 
         return toolsLocale;
     }
 
-    public String getTranslationFormat()
-    {
+    public String getTranslationFormat() {
         return translationFormat;
     }
 
-    public Boolean getUseDirectBlit()
-    {
+    public Boolean getUseDirectBlit() {
         return useDirectBlit;
     }
 
-    public Boolean getUseGpu()
-    {
+    public Boolean getUseGpu() {
         return useGpu;
     }
 
-    public Boolean getUseNetwork()
-    {
+    public Boolean getUseNetwork() {
         return useNetwork;
     }
 
-    public Boolean getUseResourceBundleMetadata()
-    {
+    public Boolean getUseResourceBundleMetadata() {
         return useResourceBundleMetadata;
     }
 
-    public Boolean getVerboseStacktraces()
-    {
+    public Boolean getVerboseStacktraces() {
         return verboseStacktraces;
     }
 
-    public Boolean getVerifyDigests()
-    {
+    public Boolean getVerifyDigests() {
         return verifyDigests;
     }
 
-    public final Boolean getVersion()
-    {
+    public final Boolean getVersion() {
         // must return null, otherwise will prevent compiler execution
         return null;
     }
 
-    public Boolean getWarnArrayTostringChanges()
-    {
-        return getCompilerWarnings().get( "warn-array-tostring-changes" );
+    public Boolean getWarnArrayTostringChanges() {
+        return getCompilerWarnings().get("warn-array-tostring-changes");
     }
 
-    public Boolean getWarnAssignmentWithinConditional()
-    {
-        return getCompilerWarnings().get( "warn-assignment-within-conditional" );
+    public Boolean getWarnAssignmentWithinConditional() {
+        return getCompilerWarnings().get("warn-assignment-within-conditional");
     }
 
-    public Boolean getWarnBadArrayCast()
-    {
-        return getCompilerWarnings().get( "warn-bad-array-cast" );
+    public Boolean getWarnBadArrayCast() {
+        return getCompilerWarnings().get("warn-bad-array-cast");
     }
 
-    public Boolean getWarnBadBoolAssignment()
-    {
-        return getCompilerWarnings().get( "warn-bad-bool-assignment" );
+    public Boolean getWarnBadBoolAssignment() {
+        return getCompilerWarnings().get("warn-bad-bool-assignment");
     }
 
-    public Boolean getWarnBadDateCast()
-    {
-        return getCompilerWarnings().get( "warn-bad-date-cast" );
+    public Boolean getWarnBadDateCast() {
+        return getCompilerWarnings().get("warn-bad-date-cast");
     }
 
-    public Boolean getWarnBadEs3TypeMethod()
-    {
-        return getCompilerWarnings().get( "warn-bad-es3-type-method" );
+    public Boolean getWarnBadEs3TypeMethod() {
+        return getCompilerWarnings().get("warn-bad-es3-type-method");
     }
 
-    public Boolean getWarnBadEs3TypeProp()
-    {
-        return getCompilerWarnings().get( "warn-bad-es3-type-prop" );
+    public Boolean getWarnBadEs3TypeProp() {
+        return getCompilerWarnings().get("warn-bad-es3-type-prop");
     }
 
-    public Boolean getWarnBadNanComparison()
-    {
-        return getCompilerWarnings().get( "warn-bad-nan-comparison" );
+    public Boolean getWarnBadNanComparison() {
+        return getCompilerWarnings().get("warn-bad-nan-comparison");
     }
 
-    public Boolean getWarnBadNullAssignment()
-    {
-        return getCompilerWarnings().get( "warn-bad-null-assignment" );
+    public Boolean getWarnBadNullAssignment() {
+        return getCompilerWarnings().get("warn-bad-null-assignment");
     }
 
-    public Boolean getWarnBadNullComparison()
-    {
-        return getCompilerWarnings().get( "warn-bad-null-comparison" );
+    public Boolean getWarnBadNullComparison() {
+        return getCompilerWarnings().get("warn-bad-null-comparison");
     }
 
-    public Boolean getWarnBadUndefinedComparison()
-    {
-        return getCompilerWarnings().get( "warn-bad-undefined-comparison" );
+    public Boolean getWarnBadUndefinedComparison() {
+        return getCompilerWarnings().get("warn-bad-undefined-comparison");
     }
 
-    public Boolean getWarnBooleanConstructorWithNoArgs()
-    {
-        return getCompilerWarnings().get( "warn-boolean-constructor-with-no-args" );
+    public Boolean getWarnBooleanConstructorWithNoArgs() {
+        return getCompilerWarnings().get("warn-boolean-constructor-with-no-args");
     }
 
-    public Boolean getWarnChangesInResolve()
-    {
-        return getCompilerWarnings().get( "warn-changes-in-resolve" );
+    public Boolean getWarnChangesInResolve() {
+        return getCompilerWarnings().get("warn-changes-in-resolve");
     }
 
-    public Boolean getWarnClassIsSealed()
-    {
-        return getCompilerWarnings().get( "warn-class-is-sealed" );
+    public Boolean getWarnClassIsSealed() {
+        return getCompilerWarnings().get("warn-class-is-sealed");
     }
 
-    public Boolean getWarnConstNotInitialized()
-    {
-        return getCompilerWarnings().get( "warn-const-not-initialized" );
+    public Boolean getWarnConstNotInitialized() {
+        return getCompilerWarnings().get("warn-const-not-initialized");
     }
 
-    public Boolean getWarnConstructorReturnsValue()
-    {
-        return getCompilerWarnings().get( "warn-constructor-returns-value" );
+    public Boolean getWarnConstructorReturnsValue() {
+        return getCompilerWarnings().get("warn-constructor-returns-value");
     }
 
-    public Boolean getWarnDeprecatedEventHandlerError()
-    {
-        return getCompilerWarnings().get( "warn-deprecated-event-handler-error" );
+    public Boolean getWarnDeprecatedEventHandlerError() {
+        return getCompilerWarnings().get("warn-deprecated-event-handler-error");
     }
 
-    public Boolean getWarnDeprecatedFunctionError()
-    {
-        return getCompilerWarnings().get( "warn-deprecated-function-error" );
+    public Boolean getWarnDeprecatedFunctionError() {
+        return getCompilerWarnings().get("warn-deprecated-function-error");
     }
 
-    public Boolean getWarnDeprecatedPropertyError()
-    {
-        return getCompilerWarnings().get( "warn-deprecated-property-error" );
+    public Boolean getWarnDeprecatedPropertyError() {
+        return getCompilerWarnings().get("warn-deprecated-property-error");
     }
 
-    public Boolean getWarnDuplicateArgumentNames()
-    {
-        return getCompilerWarnings().get( "warn-duplicate-argument-names" );
+    public Boolean getWarnDuplicateArgumentNames() {
+        return getCompilerWarnings().get("warn-duplicate-argument-names");
     }
 
-    public Boolean getWarnDuplicateVariableDef()
-    {
-        return getCompilerWarnings().get( "warn-duplicate-variable-def" );
+    public Boolean getWarnDuplicateVariableDef() {
+        return getCompilerWarnings().get("warn-duplicate-variable-def");
     }
 
-    public Boolean getWarnForVarInChanges()
-    {
-        return getCompilerWarnings().get( "warn-for-var-in-changes" );
+    public Boolean getWarnForVarInChanges() {
+        return getCompilerWarnings().get("warn-for-var-in-changes");
     }
 
-    public Boolean getWarnImportHidesClass()
-    {
-        return getCompilerWarnings().get( "warn-import-hides-class" );
+    public Boolean getWarnImportHidesClass() {
+        return getCompilerWarnings().get("warn-import-hides-class");
     }
 
-    public Boolean getWarnings()
-    {
+    public Boolean getWarnings() {
         return showWarnings;
     }
 
-    public Boolean getWarnInstanceOfChanges()
-    {
-        return getCompilerWarnings().get( "warn-instance-of-changes" );
+    public Boolean getWarnInstanceOfChanges() {
+        return getCompilerWarnings().get("warn-instance-of-changes");
     }
 
-    public Boolean getWarnInternalError()
-    {
-        return getCompilerWarnings().get( "warn-internal-error" );
+    public Boolean getWarnInternalError() {
+        return getCompilerWarnings().get("warn-internal-error");
     }
 
-    public Boolean getWarnLevelNotSupported()
-    {
-        return getCompilerWarnings().get( "warn-level-not-supported" );
+    public Boolean getWarnLevelNotSupported() {
+        return getCompilerWarnings().get("warn-level-not-supported");
     }
 
-    public Boolean getWarnMissingNamespaceDecl()
-    {
-        return getCompilerWarnings().get( "warn-missing-namespace-decl" );
+    public Boolean getWarnMissingNamespaceDecl() {
+        return getCompilerWarnings().get("warn-missing-namespace-decl");
     }
 
-    public Boolean getWarnNegativeUintLiteral()
-    {
-        return getCompilerWarnings().get( "warn-negative-uint-literal" );
+    public Boolean getWarnNegativeUintLiteral() {
+        return getCompilerWarnings().get("warn-negative-uint-literal");
     }
 
-    public Boolean getWarnNoConstructor()
-    {
-        return getCompilerWarnings().get( "warn-no-constructor" );
+    public Boolean getWarnNoConstructor() {
+        return getCompilerWarnings().get("warn-no-constructor");
     }
 
-    public Boolean getWarnNoExplicitSuperCallInConstructor()
-    {
-        return getCompilerWarnings().get( "warn-no-explicit-super-call-in-constructor" );
+    public Boolean getWarnNoExplicitSuperCallInConstructor() {
+        return getCompilerWarnings().get("warn-no-explicit-super-call-in-constructor");
     }
 
-    public Boolean getWarnNoTypeDecl()
-    {
-        return getCompilerWarnings().get( "warn-no-type-decl" );
+    public Boolean getWarnNoTypeDecl() {
+        return getCompilerWarnings().get("warn-no-type-decl");
     }
 
-    public Boolean getWarnNumberFromStringChanges()
-    {
-        return getCompilerWarnings().get( "warn-number-from-string-changes" );
+    public Boolean getWarnNumberFromStringChanges() {
+        return getCompilerWarnings().get("warn-number-from-string-changes");
     }
 
-    public Boolean getWarnScopingChangeInThis()
-    {
-        return getCompilerWarnings().get( "warn-scoping-change-in-this" );
+    public Boolean getWarnScopingChangeInThis() {
+        return getCompilerWarnings().get("warn-scoping-change-in-this");
     }
 
-    public Boolean getWarnSlowTextFieldAddition()
-    {
-        return getCompilerWarnings().get( "warn-slow-text-field-addition" );
+    public Boolean getWarnSlowTextFieldAddition() {
+        return getCompilerWarnings().get("warn-slow-text-field-addition");
     }
 
-    public Boolean getWarnUnlikelyFunctionValue()
-    {
-        return getCompilerWarnings().get( "warn-unlikely-function-value" );
+    public Boolean getWarnUnlikelyFunctionValue() {
+        return getCompilerWarnings().get("warn-unlikely-function-value");
     }
 
-    public Boolean getWarnXmlClassHasChanged()
-    {
-        return getCompilerWarnings().get( "warn-xml-class-has-changed" );
+    public Boolean getWarnXmlClassHasChanged() {
+        return getCompilerWarnings().get("warn-xml-class-has-changed");
     }
 
-    @SuppressWarnings( "unchecked" )
-    public boolean isCompilationRequired()
-    {
-        if ( !quick )
-        {
+    @SuppressWarnings("unchecked")
+    public boolean isCompilationRequired() {
+        if (!quick) {
             // not running at quick mode
             return true;
         }
 
         Artifact artifact;
-        try
-        {
+        try {
             artifact =
-                resolve( project.getGroupId(), project.getArtifactId(), project.getVersion(), getClassifier(),
-                         project.getPackaging() );
-        }
-        catch ( RuntimeMavenResolutionException e )
-        {
+                    resolve(project.getGroupId(), project.getArtifactId(), project.getVersion(), getClassifier(),
+                            project.getPackaging());
+        } catch (RuntimeMavenResolutionException e) {
             artifact = e.getArtifact();
         }
 
-        if ( !artifact.isResolved() || artifact.getFile() == null || !artifact.getFile().exists() )
-        {
+        if (!artifact.isResolved() || artifact.getFile() == null || !artifact.getFile().exists()) {
             // Recompile, file doesn't exists
-            getLog().warn( "Can't find any older installed version." );
+            getLog().warn("Can't find any older installed version.");
             return true;
         }
 
@@ -3279,47 +3025,38 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
 
         boolean required = false;
         Set<Artifact> dependencies = getDependencies();
-        for ( Artifact dependency : dependencies )
-        {
-            if ( org.apache.commons.io.FileUtils.isFileNewer( dependency.getFile(), lastCompiledArtifact ) )
-            {
+        for (Artifact dependency : dependencies) {
+            if (org.apache.commons.io.FileUtils.isFileNewer(dependency.getFile(), lastCompiledArtifact)) {
                 // a dependency is newer, recompile
-                getLog().warn( "Found a updated dependency: " + dependency );
+                getLog().warn("Found a updated dependency: " + dependency);
                 required = true;
             }
         }
 
-        if ( !required )
-        {
+        if (!required) {
             Collection<File> files =
-                org.apache.commons.io.FileUtils.listFiles( new File( project.getBuild().getSourceDirectory() ),
-                                                           new AgeFileFilter( lastCompiledArtifact, false ),
-                                                           TrueFileFilter.INSTANCE );
+                    org.apache.commons.io.FileUtils.listFiles(new File(project.getBuild().getSourceDirectory()),
+                            new AgeFileFilter(lastCompiledArtifact, false),
+                            TrueFileFilter.INSTANCE);
 
             // If has any newer file
-            if ( files.size() > 0 )
-            {
-                getLog().warn( "Found some updated files." );
+            if (files.size() > 0) {
+                getLog().warn("Found some updated files.");
                 required = true;
             }
         }
 
-        if ( !required )
-        {
-            try
-            {
-                final File output = new File( getOutput() );
+        if (!required) {
+            try {
+                final File output = new File(getOutput());
 
-                FileUtils.copyFile( artifact.getFile(), output );
+                FileUtils.copyFile(artifact.getFile(), output);
 
-                if ( !output.setLastModified( artifact.getFile().lastModified() ) )
-                {
-                    getLog().warn( "Could not set modified on copied artifact. Unnecessary rebuilds will occur." );
+                if (!output.setLastModified(artifact.getFile().lastModified())) {
+                    getLog().warn("Could not set modified on copied artifact. Unnecessary rebuilds will occur.");
                 }
-            }
-            catch ( IOException e )
-            {
-                getLog().error( "Unable to copy installed version to target folder.", e );
+            } catch (IOException e) {
+                getLog().error("Unable to copy installed version to target folder.", e);
                 return true;
             }
         }
@@ -3328,72 +3065,59 @@ public abstract class AbstractFlexCompilerMojo<CFG, C extends AbstractFlexCompil
         return required;
     }
 
-    @SuppressWarnings( "unchecked" )
-    private File resolveThemeFile( String artifactName, String themeName, String type, String path )
-    {
-        Artifact sparkSwc = getDependency( groupId( FRAMEWORK_GROUP_ID ), artifactId( artifactName ), type( "swc" ) );
-        if ( sparkSwc == null )
-        {
+    @SuppressWarnings("unchecked")
+    private File resolveThemeFile(String artifactName, String themeName, String type, String path) {
+        Artifact sparkSwc = getDependency(groupId(FRAMEWORK_GROUP_ID), artifactId(artifactName), type("swc"));
+        if (sparkSwc == null) {
             return null;
         }
 
         File sparkCss;
-        try
-        {
+        try {
             // first try to get the artifact from maven local repository for the appropriated flex version
-            sparkCss = resolve( FRAMEWORK_GROUP_ID, themeName, getFrameworkVersion(), "theme", type ).getFile();
-        }
-        catch ( RuntimeMavenResolutionException e )
-        {
+            sparkCss = resolve(FRAMEWORK_GROUP_ID, themeName, getFrameworkVersion(), "theme", type).getFile();
+        } catch (RuntimeMavenResolutionException e) {
             // then try to get it from framework-config.zip
             File dir = getUnpackedFrameworkConfig();
-            sparkCss = new File( dir, "themes/" + path + "/" + themeName + "." + type );
+            sparkCss = new File(dir, "themes/" + path + "/" + themeName + "." + type);
 
             // if not possible get it from flexmojos jar
-            if ( !sparkCss.exists() )
-            {
-                sparkCss = new File( getOutputDirectory(), themeName + "." + type );
+            if (!sparkCss.exists()) {
+                sparkCss = new File(getOutputDirectory(), themeName + "." + type);
                 sparkCss.getParentFile().mkdirs();
-                try
-                {
-                    FileUtils.copyURLToFile( MavenUtils.class.getResource( "/themes/" + themeName + "." + type ),
-                                             sparkCss );
-                }
-                catch ( IOException ioE )
-                {
-                    throw new MavenRuntimeException( "Error copying " + themeName + "." + type + " file.", ioE );
+                try {
+                    FileUtils.copyURLToFile(MavenUtils.class.getResource("/themes/" + themeName + "." + type),
+                            sparkCss);
+                } catch (IOException ioE) {
+                    throw new MavenRuntimeException("Error copying " + themeName + "." + type + " file.", ioE);
                 }
             }
         }
         return sparkCss;
     }
 
-    public void versionCheck()
-    {
-        if ( iKnowWhatImDoingPleaseBreakMyBuildIwontBlameFlexmojosForStopWorking )
-        {
+    public void versionCheck() {
+        if (iKnowWhatImDoingPleaseBreakMyBuildIwontBlameFlexmojosForStopWorking) {
             return;
         }
 
         String compilerVersion = getCompilerVersion();
         String frameworkVersion = getFrameworkVersion();
-        if ( compilerVersion == null || frameworkVersion == null )
-        {
+        if (compilerVersion == null || frameworkVersion == null) {
             // ignore, missing version
             return;
         }
 
-        if ( !compilerVersion.equals( frameworkVersion ) )
-        {
+        if (!compilerVersion.equals(frameworkVersion)) {
             String msg =
-                "Flex compiler and flex framework versions doesn't match. Compiler: '"
-                    + compilerVersion
-                    + "' - Framework: '"
-                    + frameworkVersion
-                    + "'.\n"
-                    + " You can use 'iKnowWhatImDoingPleaseBreakMyBuildIwontBlameFlexmojosForStopWorking' to disable this check.  Please refer to Flexmojos maven doc.\n"
-                    + "If you prefer fixing it instead of ignoring, take a look at: https://docs.sonatype.org/display/FLEXMOJOS/How+to+set+Flex+SDK+version";
-            throw new IllegalStateException( msg );
+                    "Flex compiler and flex framework versions doesn't match. Compiler: '"
+                            + compilerVersion
+                            + "' - Framework: '"
+                            + frameworkVersion
+                            + "'.\n"
+                            + " You can use 'iKnowWhatImDoingPleaseBreakMyBuildIwontBlameFlexmojosForStopWorking' to disable this check.  Please refer to Flexmojos maven doc.\n"
+                            + "If you prefer fixing it instead of ignoring, take a look at: https://docs.sonatype.org/display/FLEXMOJOS/How+to+set+Flex+SDK+version";
+            throw new IllegalStateException(msg);
         }
     }
 

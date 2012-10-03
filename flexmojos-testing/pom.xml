@@ -24,7 +24,7 @@
   <parent>
     <groupId>net.flexmojos.oss</groupId>
     <artifactId>flexmojos-parent</artifactId>
-    <version>5.1-beta-SNAPSHOT</version>
+    <version>5.1-beta-QP</version>
   </parent>
 
   <artifactId>flexmojos-testing</artifactId>
@@ -49,7 +49,7 @@
       <modules>
         <module>flexmojos-tester</module>
         <module>flexmojos-unittest</module>
-        <module>flexmojos-test-harness</module>
+        <!--<module>flexmojos-test-harness</module>-->
       </modules>
     </profile>
   </profiles>

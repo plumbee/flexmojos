@@ -25,7 +25,7 @@
   <parent>
     <groupId>net.flexmojos.oss</groupId>
     <artifactId>flexmojos-testing</artifactId>
-    <version>5.1-beta-SNAPSHOT</version>
+    <version>5.1-beta-QP</version>
   </parent>
 
   <artifactId>flexmojos-test-harness</artifactId>
@@ -132,7 +132,8 @@
 
       <plugin>
         <artifactId>maven-invoker-plugin</artifactId>
-        <version>1.6-SONATYPE-r940877</version>
+        <!--<version>1.6-SONATYPE-r940877</version>-->
+        <version>1.7</version>
         <configuration>
           <localRepositoryPath>${fake-repo}</localRepositoryPath>
           <extraArtifacts>

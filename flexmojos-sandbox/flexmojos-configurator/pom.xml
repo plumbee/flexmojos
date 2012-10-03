@@ -23,7 +23,7 @@
   <parent>
     <groupId>net.flexmojos.oss</groupId>
     <artifactId>flexmojos-sandbox</artifactId>
-    <version>5.1-beta-SNAPSHOT</version>
+    <version>5.1-beta-QP</version>
   </parent>
 
   <artifactId>flexmojos-configurator</artifactId>
