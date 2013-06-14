@@ -24,7 +24,7 @@
   <parent>
     <artifactId>flexmojos-archetypes</artifactId>
     <groupId>net.flexmojos.oss</groupId>
-    <version>5.1-beta-QP</version>
+    <version>5.1-beta-QP.2-SNAPSHOT</version>
   </parent>
 
   <artifactId>flexmojos-archetypes-modular-webapp</artifactId>
