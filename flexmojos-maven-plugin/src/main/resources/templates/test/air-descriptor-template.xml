@@ -62,6 +62,8 @@
 		<!-- The main SWF or HTML file of the application. Required. -->
 		<!-- Note: In Flash Builder, the SWF reference is set automatically. -->
 		<content>${swf}</content>
+
+        <renderMode>direct</renderMode>
 		
 		<!-- The title of the main window. Optional. -->
 		<!-- <title></title> -->
