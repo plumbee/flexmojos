@@ -33,7 +33,8 @@ package net.flexmojos.oss.test.report {
     	 */
     	public function toXml():XML
     	{
-		    var timeInt : int = time * 1000;
+//		    var timeInt : int = time * 1000;
+		    var timeInt : int = 0;
 
     		var genxml:XML =
 		    <testcase 
