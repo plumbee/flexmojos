@@ -48,11 +48,11 @@
     <distributionManagement>
         <repository>
             <id>nexus</id>
-            <url>http://nexus.plumbee.co.uk:8081/nexus/content/repositories/plumbeerel/</url>
+            <url>http://nexus.plumbee.co.uk:8081/nexus/content/repositories/thirdparty/</url>
         </repository>
         <snapshotRepository>
             <id>nexus</id>
-            <url>http://nexus.plumbee.co.uk:8081/nexus/content/repositories/plumbee/</url>
+            <url>http://nexus.plumbee.co.uk:8081/nexus/content/repositories/thirdparty/</url>
         </snapshotRepository>
     </distributionManagement>
 
