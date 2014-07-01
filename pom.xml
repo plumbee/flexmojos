@@ -52,7 +52,7 @@
         </repository>
         <snapshotRepository>
             <id>nexus</id>
-            <url>http://nexus.plumbee.co.uk:8081/nexus/content/repositories/thirdparty/</url>
+            <url>http://nexus.plumbee.co.uk:8081/nexus/content/repositories/thirdpartysnapshot/</url>
         </snapshotRepository>
     </distributionManagement>
 
