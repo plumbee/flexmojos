@@ -1,6 +1,16 @@
 Flexmojos
 ===================
 
+Recommended build instructions:
+
+first:
+mvn clean install -P minimal -Dmaven.test.skip=true
+
+then
+mvn clean install  -Dmaven.test.skip=true
+
+===================
+
 This is the Core codebase of Flexmojos.
 
 Flexmojos provides first-class support for Flex and AIR development within Apache Maven. It allows Maven to compile, optimize, and test Flex SWF, Flex SWC, Air SWF and Air SWC.

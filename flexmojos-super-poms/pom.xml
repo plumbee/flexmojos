@@ -24,7 +24,7 @@
   <parent>
     <groupId>net.flexmojos.oss</groupId>
     <artifactId>flexmojos-parent</artifactId>
-    <version>5.1-beta-QP.2-SNAPSHOT</version>
+    <version>5.1-beta-QP-2</version>
   </parent>
 
   <artifactId>flexmojos-super-poms</artifactId>

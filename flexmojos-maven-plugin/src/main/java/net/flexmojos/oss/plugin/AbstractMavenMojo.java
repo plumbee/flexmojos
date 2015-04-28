@@ -159,6 +159,14 @@ public abstract class AbstractMavenMojo
      */
     private String airVersion;
 
+
+    /**
+     * Render mode: direct, gpu, cpu, auto
+     *
+     * @parameter expression="${flex.renderMode}" default-value="direct"
+     */
+    private String renderMode;
+
     protected final Matcher<? super Artifact> GLOBAL_MATCHER = initGlobalMatcher();
 
     /**
@@ -324,6 +332,7 @@ public abstract class AbstractMavenMojo
             variables.put( "id", swf.getName().replaceAll( "[^A-Za-z0-9]", "" ) );
             variables.put( "swf", swf.getName() );
             variables.put( "air-version", getAirTarget() );
+            variables.put( "renderMode", getRenderMode() );
 
             InterpolationFilterReader filterReader = new InterpolationFilterReader( reader, variables );
 
@@ -445,6 +454,10 @@ public abstract class AbstractMavenMojo
             return "1.0";
         }
         else return airVersion;
+    }
+
+    public String getRenderMode() {
+       return renderMode != null ? renderMode : "direct";
     }
 
     protected File getBasedir()

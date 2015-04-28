@@ -63,7 +63,7 @@
 		<!-- Note: In Flash Builder, the SWF reference is set automatically. -->
 		<content>${swf}</content>
 
-        <renderMode>direct</renderMode>
+        <renderMode>${renderMode}</renderMode>
 		
 		<!-- The title of the main window. Optional. -->
 		<!-- <title></title> -->
